@@ -3,7 +3,7 @@ package src;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class DataLoader {
+public class DataLoader extends DataConstants {
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
         return users;

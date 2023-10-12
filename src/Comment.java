@@ -4,6 +4,7 @@ package src;
  * @author Gavin Orme
  */
 import java.util.ArrayList;
+import java.util.Date;
 public class Comment 
 {
     private User user;
