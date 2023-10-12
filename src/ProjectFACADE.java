@@ -1,3 +1,4 @@
+package src;
 public class ProjectFACADE {
     private User user;
     private Project currentProject;
