@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class UserList {
 
@@ -10,7 +10,7 @@ public class UserList {
     }
 
     public ArrayList<User> getAllUsers() {
-
+       
     }
 
     public User getCurrentUser() {
