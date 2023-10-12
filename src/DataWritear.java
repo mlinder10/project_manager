@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class DataWritear {
+public class DataWritear extends DataConstants {
     public static boolean saveUsers(ArrayList<User> users) {
         return true;
     }
