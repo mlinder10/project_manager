@@ -7,7 +7,6 @@
     "end": "Thu Oct 12 13:48:55 EDT 2023",
     "sections": [
       {
-        "id": "07b8ef51-9255-42a5-91b3-00dcb5b4bd6e",
         "title": "DOING",
         "tasks": [
           {
@@ -28,7 +27,14 @@
                 "comments": []
               }
             ],
-            "changeLog": ["TODO", "DOING"]
+            "changeLog": [
+              {
+                "userEdited": "d3e389b5-3b16-4e55-aae7-6ce921cff993",
+                "date": "Thu Oct 12 13:48:55 EDT 2023",
+                "from": "TODO",
+                "to": "DOING"
+              }
+            ]
           }
         ]
       }
@@ -65,7 +71,6 @@
     "end": "Thu Oct 12 13:48:55 EDT 2023",
     "sections": [
       {
-        "id": "ca7510cb-bcf2-4b30-adc0-c34303a727a0",
         "title": "DOING",
         "tasks": [
           {
@@ -86,7 +91,12 @@
                 "comments": []
               }
             ],
-            "changeLog": ["TODO", "DOING"]
+            "changeLog": {
+              "userEdited": "d3e389b5-3b16-4e55-aae7-6ce921cff993",
+              "date": "Thu Oct 12 13:48:55 EDT 2023",
+              "from": "TODO",
+              "to": "DOING"
+            }
           }
         ]
       }
