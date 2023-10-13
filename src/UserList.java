@@ -1,4 +1,5 @@
-
+package src;
+import java.util.ArrayList;
 
 public class UserList {
 
@@ -9,23 +10,28 @@ public class UserList {
 
     }
 
-    public ArrayList<User> getAllUsers() {
-
+    public static ArrayList<User> getAllUsers() {
+        return null;
+       
     }
 
-    public User getCurrentUser() {
+    public static User getCurrentUser() {
+        return null;
 
     }
 
     public boolean register(String email, String username, String password) {
+        return false;
 
     }
 
     public boolean login (String username, String password) {
+        return false;
 
     }
 
     public boolean logout() {
+        return false;
 
     }
 }
