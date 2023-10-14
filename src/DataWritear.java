@@ -42,8 +42,8 @@ public class DataWritear extends DataConstants {
             try(FileWriter file = new FileWriter("project_manager/json/projects.json")) {
                 file.write(jsonProject.toJSONString());
                 file.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException o) {
+                o.printStackTrace();
             }
         } 
         return hasProject;      
