@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
-public class DataLoader {
+public class DataLoader extends DataConstants{
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
