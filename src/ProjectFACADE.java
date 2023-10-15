@@ -4,11 +4,11 @@ public class ProjectFACADE {
     private Project currentProject;
 
     public User login(String username, String password){
-        return User;
+        return user;
     }
 
     public User signUp(String username, String password){
-        return User;
+        return user;
     }
 
     public Project getCurrentProject(){
