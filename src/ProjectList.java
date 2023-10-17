@@ -21,7 +21,6 @@ public class ProjectList {
         return projectList;
     }
 
-<<<<<<< HEAD
     public static Project getCurrentProject() 
     {
         return null;
@@ -29,11 +28,9 @@ public class ProjectList {
 
     public boolean createProject(User user)
     {
-=======
     public boolean createProject(User user, String title) {
         Project newProject = new Project(title, user);
         projects.add(newProject);
->>>>>>> 5418ffb6109c41381565598c23cc758d8c110998
         return true;
     }
 
