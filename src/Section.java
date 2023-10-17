@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 public class Section {
+    public String id;
     public String title;
     private ArrayList<Task> tasks;
 
