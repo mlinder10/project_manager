@@ -12,16 +12,14 @@ public class Project {
     ArrayList<Section> sections;
     ArrayList<Change> backlog;
 
-<<<<<<< HEAD
     public Project(String title, User owner) {
 
-=======
+    }
     public Project(String title, User owner){
 
     }
     public Project(UUID id, String title, User owner){
         
->>>>>>> 9581a42b85d16c69d2a347d19cd3ed9452aaf8a8
     }
 
     public Project(UUID id, String title, User owner) {

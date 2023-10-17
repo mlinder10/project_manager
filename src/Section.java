@@ -6,22 +6,20 @@ public class Section {
     private String title;
     private ArrayList<Task> tasks;
 
-    public Section(String title, String id){
+    public Section sectionTitle(String title){
         this.title = title;
         this.id = id;
         ArrayList<Task> tasks = new ArrayList<Task>();
+        return sectionTitle(title);
     }
 
     public boolean addTask(Task task){
-        for (Task sectionElement : tasks)
-        {
-            if(task.id.equals(sectionElement.id))
-                task.users.add(task);
-        }
+        Task newTask = new Task(title, description, 0, category);
         return true;
     }
 
     public boolean removeTask(Task task){
+        tasks.remove(task);
         return true;
     }
 }
