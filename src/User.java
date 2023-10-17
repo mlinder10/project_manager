@@ -1,7 +1,9 @@
 package src;
+import java.util.UUID;
+
 public class User {
     
-    public String id;
+    private UUID id;
     public String username;
     private String password;
     private String email;
