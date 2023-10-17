@@ -13,15 +13,9 @@ public class ProjectFACADE {
         return userList.login(username, password);
     }
 
-<<<<<<< HEAD
     public boolean register(String username, String password, String email) {
         return userList.register(password, username, email);
     }
-=======
-    public Project getCurrentProject(){
-        return currentProject;
-    } 
->>>>>>> fd6152044dcb6fbf434ad5f66b80a386cfa6efe1
 
     public Project getCurrentProject() {
         return ProjectList.project;
