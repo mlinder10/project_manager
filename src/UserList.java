@@ -10,13 +10,13 @@ public class UserList {
 
     }
 
-    public ArrayList<User> getAllUsers() {
-        return users;
+    public static ArrayList<User> getAllUsers() {
+        return null;
        
     }
 
-    public User getCurrentUser() {
-        return user;
+    public static User getCurrentUser() {
+        return null;
 
     }
 
