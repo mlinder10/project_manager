@@ -7,6 +7,11 @@ public class Section {
     public String title;
     private ArrayList<Task> tasks;
 
+    public Section(String title) {
+        this.title = title;
+        this.tasks = new ArrayList<Task>();
+    }
+
     public Section(String title, ArrayList<Task> tasks) {
         this.title = title;
         this.tasks = tasks;
