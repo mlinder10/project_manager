@@ -7,52 +7,46 @@ import java.util.ArrayList;
 
 public class ProjectList 
 {
-    private ArrayList<Project> projects;
-    Project currentProject;
+    public ArrayList<Project> projects;
+    public Project currentProject;
+    private static ProjectList projectList;
 
     private ProjectList()
     {
-        this.currentProject = currentProject;
-        this.projects = projects;
+        projects = new ArrayList<Project>();
+        currentProject = null;
     }
 
     public static ArrayList<Project> getAllProjects()
     {
-        ArrayList<Project> projects = new ArrayList<Project>();
-        return projects;
+        if(projectList == null)
+            return new ProjectList().projects;
+        return projectList.projects;
     }
 
     public static Project getCurrentProject() 
     {
-        
-        return null;
+        if(projectList == null)
+            return new ProjectList().currentProject;
+        return projectList.currentProject;
     }
 
     public boolean createProject(User user)
     {
-        if(createProject(user) != true)
-        {
-            return false;
-        }
+        Project creatProject = new Project();
+    
         return true;
-        
     }
 
     public boolean deleteProject()
     {
-        if(deleteProject() == true)
-        {
-            return true;
-        }
+        
         return false;
     }
 
     public boolean addUser(User user)
     {
-        if(addUser(user) != true)
-        {
-            return false;
-        }
+        
         return true;
     }
 }
