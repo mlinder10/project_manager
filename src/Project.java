@@ -2,9 +2,10 @@ package src;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class Project {
-    String id;
+    UUID id;
     User owner;
     String title;
     Date start;
@@ -16,6 +17,9 @@ public class Project {
 
     public Project(String title, User owner, Date startDate, Date endDate){
 
+    }
+    public Project(UUID id, String title, User owner, Date startDate, Date endDate){
+        
     }
 
     public boolean editProject(String title){
