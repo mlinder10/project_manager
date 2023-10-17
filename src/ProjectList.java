@@ -5,6 +5,7 @@ package src;
  */
 
 import java.util.ArrayList;
+
 public class ProjectList {
     private static ProjectList projectList;
     public ArrayList<Project> projects;

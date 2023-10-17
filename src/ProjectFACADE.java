@@ -16,20 +16,14 @@ public class ProjectFACADE {
     public boolean register(String username, String password, String email) {
         return userList.register(password, username, email);
     }
-    public Project getCurrentProject(){
-        currentProject = ProjectList.getCurrentProject();
-        return currentProject;
-    } 
 
-    public Project getCurrentProject() {
-        return ProjectList.project;
-    }
-
-    public boolean createProject(){
+    public boolean createProject(String title) {
+        projectList.createProject(userList.user, title);
         return true;
     }
 
-    public boolean addUserToProject() {
+    public boolean addUserToProject(User user, Project project) {
+        projectList.addUser(user, project);
         return true;
     }
 }
