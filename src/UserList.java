@@ -4,24 +4,18 @@ import java.util.ArrayList;
 
 public class UserList {
     private static UserList list;
-    private ArrayList<User> users;
-    private User user;
+    public ArrayList<User> users;
+    public User user;
 
     private UserList() {
         users = new ArrayList<User>();
         user = null;
     }
 
-    public static ArrayList<User> getAllUsers() {
+    public static UserList getUserList() {
         if (list == null)
-            return new UserList().users;
-        return list.users;
-    }
-
-    public static User getCurrentUser() {
-        if (list == null)
-            return new UserList().user;
-        return list.user;
+            return new UserList();
+        return list;
     }
 
     public boolean register(String email, String username, String password) {
