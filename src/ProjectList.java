@@ -26,8 +26,6 @@ public class ProjectList {
         return null;
     }
 
-    public boolean createProject(User user)
-    {
     public boolean createProject(User user, String title) {
         Project newProject = new Project(title, user);
         projects.add(newProject);
