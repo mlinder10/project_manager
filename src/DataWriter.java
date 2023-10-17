@@ -20,7 +20,7 @@ public class DataWriter extends DataConstants {
             try(FileWriter file = new FileWriter("project_manager/json/users.json")) {
 
                 file.write(jsonUsers.toJSONString());
-                file.flush();
+                file.flush(); 
             } catch (IOException e) {
                 e.printStackTrace();
             }
