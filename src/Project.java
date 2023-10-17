@@ -12,11 +12,12 @@ public class Project {
     ArrayList<Section> sections;
     ArrayList<Change> backlog;
 
-    public Project(String title, User owner){
+    public Project(String title, User owner) {
 
     }
-    public Project(UUID id, String title, User owner){
-        
+
+    public Project(UUID id, String title, User owner) {
+
     }
 
     public Project(UUID id, String title, User owner) {
