@@ -23,8 +23,7 @@ public class ProjectList
 
     public static Project getCurrentProject() 
     {
-        Project project = ProjectList.getCurrentProject();
-        return project;
+        return null;
     }
 
     public boolean createProject(User user)
