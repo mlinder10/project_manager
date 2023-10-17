@@ -17,11 +17,13 @@ public class ProjectFACADE {
         return userList.register(password, username, email);
     }
 
-    public boolean createProject() {
+    public boolean createProject(String title) {
+        projectList.createProject(userList.user, title);
         return true;
     }
 
-    public boolean addUserToProject() {
+    public boolean addUserToProject(User user, Project project) {
+        projectList.addUser(user, project);
         return true;
     }
 }
