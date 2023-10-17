@@ -22,6 +22,11 @@ public class ProjectList {
         return projectList;
     }
 
+    public static Project getCurrentProject() 
+    {
+        return null;
+    }
+
     public boolean createProject(User user, String title) {
         Project newProject = new Project(title, user);
         projects.add(newProject);
