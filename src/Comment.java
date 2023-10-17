@@ -15,10 +15,11 @@ public class Comment
 
     public Comment(String title, String description)
     {
-        // this.user = user;
-        // this.content = content;
-        // this.id = id;
-        // this.date = date;
+        this.user = user;
+        this.content = content;
+        this.id = id;
+        this.date = date;
+        this.comments = new ArrayList<>(comments);
     }
 
     public boolean addComment(Comment comment)
