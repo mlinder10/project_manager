@@ -1,27 +1,32 @@
 package src;
+
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Section {
-    private String id;
+    private UUID id;
     private String title;
     private ArrayList<Task> tasks;
 
-    public Section(String title, String id){
+    public Section(String title) {
         this.title = title;
-        this.id = id;
-        ArrayList<Task> tasks = new ArrayList<Task>();
+        this.id = UUID.randomUUID();
+        this.tasks = new ArrayList<Task>();
     }
 
-    public boolean addTask(Task task){
-        for (Task sectionElement : tasks)
-        {
-            if(task.id.equals(sectionElement.id))
-                task.users.add(task);
-        }
+    public Section(String title, UUID id, ArrayList<Task> tasks) {
+        this.title = title;
+        this.id = id;
+        this.tasks = tasks;
+    }
+
+    public boolean addTask(Task task) {
+        this.tasks.add(task);
         return true;
     }
 
-    public boolean removeTask(Task task){
+    public boolean removeTask(Task task) {
+        this.tasks.remove(task);
         return true;
     }
 }
