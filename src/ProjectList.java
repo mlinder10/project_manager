@@ -1,26 +1,27 @@
 package src;
+
 /**
  * @author Gavin Orme
  */
 
 import java.util.ArrayList;
+public class ProjectList {
+    private static ProjectList projectList;
+    public ArrayList<Project> projects;
+    public Project currentProject;
 
-public class ProjectList 
-{
-    private ArrayList<Project> projects;
-    Project currentProject;
-
-    private ProjectList()
-    {
-        
+    private ProjectList() {
+        this.projects = new ArrayList<Project>();
+        this.currentProject = null;
     }
 
-    public static ArrayList<Project> getAllProjects()
-    {
-        ArrayList<Project> projects = new ArrayList<Project>();
-        return projects;
+    public static ProjectList getProjectList() {
+        if (projectList == null)
+            return new ProjectList();
+        return projectList;
     }
 
+<<<<<<< HEAD
     public static Project getCurrentProject() 
     {
         return null;
@@ -28,16 +29,25 @@ public class ProjectList
 
     public boolean createProject(User user)
     {
+=======
+    public boolean createProject(User user, String title) {
+        Project newProject = new Project(title, user);
+        projects.add(newProject);
+>>>>>>> 5418ffb6109c41381565598c23cc758d8c110998
         return true;
     }
 
-    public boolean deleteProject()
-    {
-        return false;
+    public boolean deleteProject(Project project) {
+        projects.remove(project);
+        return true;
     }
 
-    public boolean addUser(User user)
-    {
+    public boolean addUser(User user, Project project) {
+        for (Project projectElement : projects) {
+            if (project.id.equals(projectElement.id)) {
+                project.users.add(user);
+            }
+        }
         return true;
     }
 }
