@@ -22,4 +22,8 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
+    public boolean login(String username, String password) {
+        return this.username == username && this.password == password;
+    }
 }
