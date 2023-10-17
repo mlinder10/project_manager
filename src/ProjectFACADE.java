@@ -1,15 +1,16 @@
 package src;
-public class ProjectFACADE {
-    private User user;
-    private Project currentProject;
 
-    public User login(String username, String password){
-        user = UserList.getCurrentUser();
-        return user;
+public class ProjectFACADE {
+    private UserList userList;
+    private ProjectList projectList;
+
+    public ProjectFACADE() {
+        this.userList = UserList.getUserList();
+        this.projectList = ProjectList.getProjectList();
     }
 
-    public User signUp(String username, String password, String email){
-        return user;
+    public boolean login(String username, String password) {
+        return userList.login(username, password);
     }
 
     public Project getCurrentProject(){
@@ -17,13 +18,15 @@ public class ProjectFACADE {
         return currentProject;
     } 
 
+    public Project getCurrentProject() {
+        return ProjectList.project;
+    }
+
     public boolean createProject(){
-        
         return true;
     }
 
-    public boolean addUserToProject(){
-
+    public boolean addUserToProject() {
         return true;
     }
 }
