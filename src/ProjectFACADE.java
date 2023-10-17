@@ -18,7 +18,7 @@ public class ProjectFACADE {
     }
 
     public Project getCurrentProject() {
-        return ProjectList.project;
+        return ProjectList.getCurrentProject();
     }
 
     public boolean createProject(){
