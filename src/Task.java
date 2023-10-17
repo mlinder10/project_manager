@@ -19,7 +19,10 @@ import java.util.ArrayList;
 
     public Task(String title, String description, int priority, String category)
     {
-
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.category = category;
     }
 
     public boolean addComment(Comment comment)
