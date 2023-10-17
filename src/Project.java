@@ -15,10 +15,10 @@ public class Project {
     ArrayList<Section> sections;
     ArrayList<Change> backlog;
 
-    public Project(String title, User owner, Date startDate, Date endDate){
-        
+    public Project(String title, User owner){
+
     }
-    public Project(UUID id, String title, User owner, Date startDate, Date endDate){
+    public Project(UUID id, String title, User owner){
         
     }
 
