@@ -1,21 +1,28 @@
 package src;
+
 import java.util.ArrayList;
 
 public class Section {
-    private String id;
-    private String title;
+    public String title;
     private ArrayList<Task> tasks;
 
-    public Section(String title){
+    public Section(String title) {
         this.title = title;
-        ArrayList<Task> tasks = new ArrayList<Task>();
+        this.tasks = new ArrayList<Task>();
     }
 
-    public boolean addTask(Task task){
+    public Section(String title, ArrayList<Task> tasks) {
+        this.title = title;
+        this.tasks = tasks;
+    }
+
+    public boolean addTask(Task task) {
+        this.tasks.add(task);
         return true;
     }
 
-    public boolean removeTask(Task task){
+    public boolean removeTask(Task task) {
+        this.tasks.remove(task);
         return true;
     }
 }

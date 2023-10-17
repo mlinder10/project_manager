@@ -1,25 +1,29 @@
 package src;
+
 public class ProjectFACADE {
-    private User user;
-    private Project currentProject;
+    private UserList userList;
+    private ProjectList projectList;
 
-    public User login(String username, String password){
-        return user;
+    public ProjectFACADE() {
+        this.userList = UserList.getUserList();
+        this.projectList = ProjectList.getProjectList();
     }
 
-    public User signUp(String username, String password){
-        return user;
+    public boolean login(String username, String password) {
+        return userList.login(username, password);
     }
 
-    public Project getCurrentProject(){
-        return Project;
-    } 
+    public boolean register(String username, String password, String email) {
+        return userList.register(password, username, email);
+    }
 
-    public boolean createProject(){
+    public boolean createProject(String title) {
+        projectList.createProject(userList.user, title);
         return true;
     }
 
-    public boolean addUserToProject(){
+    public boolean addUserToProject(User user, Project project) {
+        projectList.addUser(user, project);
         return true;
     }
 }
