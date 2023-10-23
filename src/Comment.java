@@ -11,7 +11,7 @@ public class Comment {
 
     public UUID id;
     public User user;
-    private ArrayList<Comment> comments;
+    public ArrayList<Comment> comments;
     public Date date;
     public String content;
 

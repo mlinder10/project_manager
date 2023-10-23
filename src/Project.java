@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Project {
-    UUID id;
-    User owner;
-    String title;
-    ArrayList<Comment> comments;
-    ArrayList<User> users;
-    ArrayList<Section> sections;
+    public UUID id;
+    public User owner;
+    public String title;
+    public ArrayList<Comment> comments;
+    public ArrayList<User> users;
+    public ArrayList<Section> sections;
 
     public static void main(String args[]) {
         Project p = new Project(null, null, null, null, null, null);

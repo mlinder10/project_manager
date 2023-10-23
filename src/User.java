@@ -7,7 +7,7 @@ public class User {
     public UUID id;
     public String username;
     private String password;
-    private String email;
+    public String email;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -25,5 +25,9 @@ public class User {
 
     public boolean login(String username, String password) {
         return this.username == username && this.password == password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

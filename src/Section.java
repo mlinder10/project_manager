@@ -7,7 +7,7 @@ public class Section {
 
     public UUID id;
     public String title;
-    private ArrayList<Task> tasks;
+    public ArrayList<Task> tasks;
 
     public Section(String title) {
         this.title = title;
