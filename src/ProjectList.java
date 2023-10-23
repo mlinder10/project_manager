@@ -7,6 +7,14 @@ package src;
 import java.util.ArrayList;
 
 public class ProjectList {
+
+    public static void main(String args[]) {
+        ProjectList p = new ProjectList();
+        p.createProject(null, null);
+        p.deleteProject(getCurrentProject());
+        p.addUser(null, getCurrentProject());
+    }
+
     private static ProjectList projectList;
     public ArrayList<Project> projects;
     public Project currentProject;

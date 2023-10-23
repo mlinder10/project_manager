@@ -4,14 +4,6 @@ public class ProjectFACADE {
     private UserList userList;
     private ProjectList projectList;
 
-    public static void main(String args[]) {
-        ProjectFACADE p = new ProjectFACADE();
-        p.login(null, null);
-        p.register(null, null, null);
-        // p.createProject(null);
-        p.addUserToProject(null, null);
-        }
-
     public ProjectFACADE() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
