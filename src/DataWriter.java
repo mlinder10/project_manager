@@ -53,6 +53,30 @@ public class DataWriter extends DataConstants {
     public static JSONObject getProjectJson(Project project) {
         JSONObject projectJson = new JSONObject();
         projectJson.put(PROJECT_ID, project.id.toString());
+        projectJson.put(PROJECT_OWNER, getUserJson(project.owner));
+        projectJson.put(PROJECT_TITLE, project.title);
+
+        JSONArray commentsJson = new JSONArray();
+        for (int commentIndex = 0; commentIndex < project.comments.size(); commentIndex++) {
+            JSONObject commentJson = getCommentJson(project.comments.get(commentIndex));
+            commentsJson.add(commentJson);
+        }
+        projectJson.put(PROJECT_COMMENTS, commentsJson);
+
+        JSONArray usersJson = new JSONArray();
+        for (int userIndex = 0; userIndex < project.users.size(); userIndex++) {
+            JSONObject userJson = getUserJson(project.users.get(userIndex));
+            usersJson.add(userJson);
+        }
+        projectJson.put(PROJECT_USERS, usersJson);
+
+        JSONArray sectionsJson = new JSONArray();
+        for (int sectionIndex = 0; sectionIndex < project.sections.size(); sectionIndex++) {
+            JSONObject sectionJson = getUserJson(project.users.get(sectionIndex));
+            sectionsJson.add(sectionJson);
+        }
+        projectJson.put(PROJECT_SECTIONS, sectionsJson);
+
         return projectJson;
     }
 
