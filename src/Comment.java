@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Comment {
 
     public UUID id;
-    private User user;
+    public User user;
     private ArrayList<Comment> comments;
     public Date date;
     public String content;
