@@ -9,11 +9,6 @@ import java.util.UUID;
 
 public class Comment {
 
-    public static void main(String[] args)
-    {
-        Comment comment = new Comment(null, null);
-        comment.addComment(comment);
-    }
     public UUID id;
     private User user;
     private ArrayList<Comment> comments;
