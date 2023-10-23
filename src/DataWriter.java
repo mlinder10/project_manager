@@ -8,11 +8,9 @@ import java.util.ArrayList;
 public class DataWriter extends DataConstants {
 
     public static boolean saveUsers(ArrayList<User> users) {
-        ArrayList<User> userList = UserList.getUserList().users;
         JSONArray jsonUsers = new JSONArray();
-
-        for (int i = 0; i < userList.size(); i++) {
-            jsonUsers.add(getUserJson(userList.get(i)));
+        for (User user : UserList.getUserList().users) {
+            jsonUsers.add(getUserJson(user));
         }
         try (FileWriter file = new FileWriter("project_manager/json/users.json")) {
             file.write(jsonUsers.toJSONString());
@@ -25,11 +23,9 @@ public class DataWriter extends DataConstants {
     }
 
     public static boolean saveProjects(ArrayList<Project> projects) {
-        ArrayList<Project> projectList = ProjectList.getProjectList().projects;
         JSONArray jsonProject = new JSONArray();
-
-        for (int i = 0; i < projectList.size(); i++) {
-            jsonProject.add(getProjectJson(projectList.get(i)));
+        for (Project project : ProjectList.getProjectList().projects) {
+            jsonProject.add(getProjectJson(project));
         }
         try (FileWriter file = new FileWriter("project_manager/json/projects.json")) {
             file.write(jsonProject.toJSONString());
@@ -57,23 +53,20 @@ public class DataWriter extends DataConstants {
         projectJson.put(PROJECT_TITLE, project.title);
 
         JSONArray commentsJson = new JSONArray();
-        for (int commentIndex = 0; commentIndex < project.comments.size(); commentIndex++) {
-            JSONObject commentJson = getCommentJson(project.comments.get(commentIndex));
-            commentsJson.add(commentJson);
+        for (Comment comment : project.comments) {
+            commentsJson.add(getCommentJson(comment));
         }
         projectJson.put(PROJECT_COMMENTS, commentsJson);
 
         JSONArray usersJson = new JSONArray();
-        for (int userIndex = 0; userIndex < project.users.size(); userIndex++) {
-            JSONObject userJson = getUserJson(project.users.get(userIndex));
-            usersJson.add(userJson);
+        for (User user : project.users) {
+            usersJson.add(getUserJson(user));
         }
         projectJson.put(PROJECT_USERS, usersJson);
 
         JSONArray sectionsJson = new JSONArray();
-        for (int sectionIndex = 0; sectionIndex < project.sections.size(); sectionIndex++) {
-            JSONObject sectionJson = getUserJson(project.users.get(sectionIndex));
-            sectionsJson.add(sectionJson);
+        for (Section section : project.sections) {
+            sectionsJson.add(getSectionJson(section));
         }
         projectJson.put(PROJECT_SECTIONS, sectionsJson);
 
@@ -82,21 +75,68 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getSectionJson(Section section) {
         JSONObject sectionJson = new JSONObject();
+        sectionJson.put(PROJECT_SECTION_ID, section.id);
+        sectionJson.put(PROJECT_SECTION_TITLE, section.title);
+
+        JSONArray tasks = new JSONArray();
+        for (Task task : section.tasks) {
+            tasks.add(getTaskJson(task));
+        }
+        sectionJson.put(PROJECT_SECTION_TASKS, tasks);
         return sectionJson;
     }
 
     public static JSONObject getTaskJson(Task task) {
         JSONObject taskJson = new JSONObject();
+        taskJson.put(PROJECT_TASK_ID, task.id.toString());
+        taskJson.put(PROJECT_TASK_TITLE, task.title);
+        taskJson.put(PROJECT_TASK_DESCRIPTION, task.description);
+        taskJson.put(PROJECT_TASK_TYPE, task.type);
+        taskJson.put(PROJECT_TASK_COMPLETION, task.completion);
+        taskJson.put(PROJECT_TASK_PRIORITY, task.priority);
+
+        JSONArray commentsJson = new JSONArray();
+        for (Comment comment : task.comments) {
+            commentsJson.add(getCommentJson(comment));
+        }
+        taskJson.put(PROJECT_TASK_COMMENTS, commentsJson);
+
+        JSONArray assignedUsersJson = new JSONArray();
+        for (User assignedUser : task.assignedUsers) {
+            assignedUsersJson.add(getUserJson(assignedUser));
+        }
+        taskJson.put(PROJECT_TASK_ASSIGNED_USERS, assignedUsersJson);
+
+        JSONArray changesJson = new JSONArray();
+        for (Change change : task.changeLog) {
+            changesJson.add(getChangeJson(change));
+        }
+        taskJson.put(PROJECT_TASK_CHANGELOG, changesJson);
         return taskJson;
     }
 
     public static JSONObject getCommentJson(Comment comment) {
         JSONObject commentJson = new JSONObject();
+        commentJson.put(PROJECT_COMMENTS_ID, comment.id.toString());
+        commentJson.put(PROJECT_COMMENTS_USER, getUserJson(comment.user));
+        commentJson.put(PROJECT_COMMENTS_DATE, comment.date);
+        commentJson.put(PROJECT_COMMENTS_CONTENT, comment.content);
+
+        JSONArray commentsJson = new JSONArray();
+        for (Comment commentRecursive : comment.comments) {
+            commentsJson.add(getCommentJson(commentRecursive));
+        }
+        commentJson.put(PROJECT_COMMENTS_COMMENTS, commentsJson);
         return commentJson;
     }
 
     public static JSONObject getChangeJson(Change change) {
         JSONObject changeJson = new JSONObject();
+        changeJson.put(PROJECT_CHANGE_ID, change.id);
+        changeJson.put(PROJECT_CHANGE_PREVIOUS, change.previousSection);
+        changeJson.put(PROJECT_CHANGE_NEXT, change.nextSection);
+        changeJson.put(PROJECT_CHANGE_DATE, change.date);
+        changeJson.put(PROJECT_CHANGE_USER, getUserJson(change.userEdited));
         return changeJson;
     }
 }
