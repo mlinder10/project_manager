@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Task {
+
     public UUID id;
     public String description;
     public String title;
