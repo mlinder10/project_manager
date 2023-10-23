@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Comment {
+
     public UUID id;
     private User user;
     private ArrayList<Comment> comments;
