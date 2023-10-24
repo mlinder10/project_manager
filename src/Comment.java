@@ -10,8 +10,8 @@ import java.util.UUID;
 public class Comment {
 
     public UUID id;
-    private User user;
-    private ArrayList<Comment> comments;
+    public User user;
+    public ArrayList<Comment> comments;
     public Date date;
     public String content;
 

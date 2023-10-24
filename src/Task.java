@@ -16,7 +16,7 @@ public class Task {
     public boolean completion;
     public int priority;
     public ArrayList<Comment> comments;
-    public ArrayList<String> changeLog;
+    public ArrayList<Change> changeLog;
 
     public Task(String title, String description, int priority, String type) {
         this.id = UUID.randomUUID();
@@ -26,12 +26,12 @@ public class Task {
         this.priority = priority;
         this.type = type;
         this.comments = new ArrayList<Comment>();
-        this.changeLog = new ArrayList<String>();
+        this.changeLog = new ArrayList<Change>();
     }
 
     public Task(UUID id, String title, String description, String type, ArrayList<User> assignedUsers,
             boolean completion, int priority, ArrayList<Comment> comments,
-            ArrayList<String> changeLog) {
+            ArrayList<Change> changeLog) {
         this.id = id;
         this.title = title;
         this.description = description;

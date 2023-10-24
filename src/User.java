@@ -4,10 +4,15 @@ import java.util.UUID;
 
 public class User {
 
+    public static void main(String[] args) {
+        User user1 = new User("jim", "jones", "jj@gmail.com");
+        System.out.println(user1.email); 
+    }
+
     public UUID id;
     public String username;
     private String password;
-    private String email;
+    public String email;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -25,5 +30,9 @@ public class User {
 
     public boolean login(String username, String password) {
         return this.username == username && this.password == password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

@@ -1,4 +1,5 @@
 package src;
+
 import java.io.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -7,90 +8,135 @@ import java.util.ArrayList;
 public class DataWriter extends DataConstants {
 
     public static boolean saveUsers(ArrayList<User> users) {
-        boolean hasUser = false;
-        User user = User.getInstance();
-        ArrayList<User> userList = users.getUsers();
         JSONArray jsonUsers = new JSONArray();
-
-        if(!users.contains(user)) {
-            hasUser=true;
-            for(int i = 0; i<userList.size(); i++){
-                jsonUsers.add(getUserJSON(userList.get(i)));
-            }
-            try(FileWriter file = new FileWriter("project_manager/json/users.json")) {
-
-                file.write(jsonUsers.toJSONString());
-                file.flush(); 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } 
-        return hasUser;
+        for (User user : UserList.getUserList().users) {
+            jsonUsers.add(getUserJson(user));
+        }
+        try (FileWriter file = new FileWriter("project_manager/json/users.json")) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public static boolean saveProjects(ArrayList<Project> projects) {
-         boolean hasProject = false;
-        Project project = Project.getInstance();
-        ArrayList<Project> projectList = projects.getProjects();
         JSONArray jsonProject = new JSONArray();
-
-        if(!projects.contains(project)) {
-            hasProject=true;
-            for(int i = 0; i<projectList.size(); i++){
-                jsonProject.add(getProjectJSON(projectList.get(i)));
-            }
-            try(FileWriter file = new FileWriter("project_manager/json/projects.json")) {
-                file.write(jsonProject.toJSONString());
-                file.flush();
-            } catch (IOException o) {
-                o.printStackTrace();
-            }
-        } 
-        return hasProject;      
+        for (Project project : ProjectList.getProjectList().projects) {
+            jsonProject.add(getProjectJson(project));
+        }
+        try (FileWriter file = new FileWriter("project_manager/json/projects.json")) {
+            file.write(jsonProject.toJSONString());
+            file.flush();
+            return true;
+        } catch (IOException o) {
+            o.printStackTrace();
+            return false;
+        }
     }
-    public static JSONObject getUserJSON(User user){
-        JSONObject userDetails = new JSONObject();
-        userDetails.put(USER_ID, user.getID().toString());
-        userDetails.put(USER_USERNAME, user.getUserName());
-        userDetails.put(USER_EMAIL, user.getEmail());
-        userDetails.put(USER_PASSWORD, user.getPassword());
-    }
-    public static JSONObject getProjectJSON(Project project){
-        JSONObject projectDetails = new JSONObject();
-        projectDetails.put(PROJECT_ID, project.getProjectID());
-        projectDetails.put(PROJECT_TITLE, project.getTitle());
-        projectDetails.put(PROJECT_START, project.getStart());
-        projectDetails.put(PROJECT_END, project.getEnd());
-        projectDetails.put(PROJECT_SECTIONS, project.getSections());
-        projectDetails.put(PROJECT_SECTIONS_ID, project.getSectionID().toString());
-        projectDetails.put(PROJECT_SECTIONS_TITLE, project.getSectionTitle());
-        projectDetails.put(PROJECT_SECTIONS_DESCRIPTION, project.getDescription());
-        projectDetails.put(PROJECT_SECTIONS_TYPE, project.getType());
-        projectDetails.put(PROJECT_SECTIONS_ASSIGNED_USERS, project.getAssignedUsers());
-        projectDetails.put(PROJECT_SECTIONS_COMPLETION, project.getCompletion());
-        projectDetails.put(PROJECT_SECTIONS_PRIORITY, project.getPriority());
-        projectDetails.put(PROJECT_SECTIONS_CATEGORY, project.getCategory());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS, project.getSectionComments());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS_ID, project.getSectionCommentsID());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS_CONTENT, project.getSectionCommentContent());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS_DATE, project.getSectionCommentDate());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS_USER, project.getSectionCommentUser());
-        projectDetails.put(PROJECT_SECTIONS_COMMENTS_COMMENTS, project.getSectionCommentsComment());
-        projectDetails.put(PROJECT_SECTIONS_CHANGELOG, project.getSectionChange());
-        projectDetails.put(PROJECT_USERS, project.getProjectUser());
-        projectDetails.put(PROJECT_COMMENTS, project.getProjectComments());
-        projectDetails.put(PROJECT_COMMENTS_ID, project.getProjectCommentsID());
-        projectDetails.put(PROJECT_COMMENTS_CONTENT, project.getProjectContent());
-        projectDetails.put(PROJECT_COMMENTS_DATE, project.getProjectCommentDate());
-        projectDetails.put(PROJECT_COMMENTS_COMMENTS, project.getProjectCommentsComments());
-        projectDetails.put(PROJECT_COMMENTS_USER, project.getProjectCommentUser());
-        projectDetails.put(PROJECT_BACKLOG, project.getProjectBacklog());
-        projectDetails.put(PROJECT_BACKLOG_ID, project.getBacklogID());
-        projectDetails.put(PROJECT_BACKLOG_TASK, project.getBacklogasks());
-        projectDetails.put(PROJECT_BACKLOG_PREVIOUS_SECTION, project.getBacklogPrev());
-        projectDetails.put(PROJECT_BACKLOG_NEXT_SECTION, project.getBacklogNextSection());
-        projectDetails.put(PROJECT_BACKLOG_DATE, project.getBacklogDate());
-        projectDetails.put(PROJECT_BACKLOG_USER_EDITED, project.getBacklogEdits());
 
+    public static JSONObject getUserJson(User user) {
+        JSONObject userJson = new JSONObject();
+        userJson.put(USER_ID, user.id.toString());
+        userJson.put(USER_USERNAME, user.username);
+        userJson.put(USER_EMAIL, user.email);
+        userJson.put(USER_PASSWORD, user.getPassword());
+        return userJson;
+    }
+
+    public static JSONObject getProjectJson(Project project) {
+        JSONObject projectJson = new JSONObject();
+        projectJson.put(PROJECT_ID, project.id.toString());
+        projectJson.put(PROJECT_OWNER, getUserJson(project.owner));
+        projectJson.put(PROJECT_TITLE, project.title);
+
+        JSONArray commentsJson = new JSONArray();
+        for (Comment comment : project.comments) {
+            commentsJson.add(getCommentJson(comment));
+        }
+        projectJson.put(PROJECT_COMMENTS, commentsJson);
+
+        JSONArray usersJson = new JSONArray();
+        for (User user : project.users) {
+            usersJson.add(getUserJson(user));
+        }
+        projectJson.put(PROJECT_USERS, usersJson);
+
+        JSONArray sectionsJson = new JSONArray();
+        for (Section section : project.sections) {
+            sectionsJson.add(getSectionJson(section));
+        }
+        projectJson.put(PROJECT_SECTIONS, sectionsJson);
+
+        return projectJson;
+    }
+
+    public static JSONObject getSectionJson(Section section) {
+        JSONObject sectionJson = new JSONObject();
+        sectionJson.put(PROJECT_SECTION_ID, section.id);
+        sectionJson.put(PROJECT_SECTION_TITLE, section.title);
+
+        JSONArray tasks = new JSONArray();
+        for (Task task : section.tasks) {
+            tasks.add(getTaskJson(task));
+        }
+        sectionJson.put(PROJECT_SECTION_TASKS, tasks);
+        return sectionJson;
+    }
+
+    public static JSONObject getTaskJson(Task task) {
+        JSONObject taskJson = new JSONObject();
+        taskJson.put(PROJECT_TASK_ID, task.id.toString());
+        taskJson.put(PROJECT_TASK_TITLE, task.title);
+        taskJson.put(PROJECT_TASK_DESCRIPTION, task.description);
+        taskJson.put(PROJECT_TASK_TYPE, task.type);
+        taskJson.put(PROJECT_TASK_COMPLETION, task.completion);
+        taskJson.put(PROJECT_TASK_PRIORITY, task.priority);
+
+        JSONArray commentsJson = new JSONArray();
+        for (Comment comment : task.comments) {
+            commentsJson.add(getCommentJson(comment));
+        }
+        taskJson.put(PROJECT_TASK_COMMENTS, commentsJson);
+
+        JSONArray assignedUsersJson = new JSONArray();
+        for (User assignedUser : task.assignedUsers) {
+            assignedUsersJson.add(getUserJson(assignedUser));
+        }
+        taskJson.put(PROJECT_TASK_ASSIGNED_USERS, assignedUsersJson);
+
+        JSONArray changesJson = new JSONArray();
+        for (Change change : task.changeLog) {
+            changesJson.add(getChangeJson(change));
+        }
+        taskJson.put(PROJECT_TASK_CHANGELOG, changesJson);
+        return taskJson;
+    }
+
+    public static JSONObject getCommentJson(Comment comment) {
+        JSONObject commentJson = new JSONObject();
+        commentJson.put(PROJECT_COMMENTS_ID, comment.id.toString());
+        commentJson.put(PROJECT_COMMENTS_USER, getUserJson(comment.user));
+        commentJson.put(PROJECT_COMMENTS_DATE, comment.date);
+        commentJson.put(PROJECT_COMMENTS_CONTENT, comment.content);
+
+        JSONArray commentsJson = new JSONArray();
+        for (Comment commentRecursive : comment.comments) {
+            commentsJson.add(getCommentJson(commentRecursive));
+        }
+        commentJson.put(PROJECT_COMMENTS_COMMENTS, commentsJson);
+        return commentJson;
+    }
+
+    public static JSONObject getChangeJson(Change change) {
+        JSONObject changeJson = new JSONObject();
+        changeJson.put(PROJECT_CHANGE_ID, change.id);
+        changeJson.put(PROJECT_CHANGE_PREVIOUS, change.previousSection);
+        changeJson.put(PROJECT_CHANGE_NEXT, change.nextSection);
+        changeJson.put(PROJECT_CHANGE_DATE, change.date);
+        changeJson.put(PROJECT_CHANGE_USER, getUserJson(change.userEdited));
+        return changeJson;
     }
 }

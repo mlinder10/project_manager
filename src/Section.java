@@ -1,19 +1,21 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Section {
 
-    public String id;
+    public UUID id;
     public String title;
-    private ArrayList<Task> tasks;
+    public ArrayList<Task> tasks;
 
     public Section(String title) {
         this.title = title;
         this.tasks = new ArrayList<Task>();
     }
 
-    public Section(String title, ArrayList<Task> tasks) {
+    public Section(UUID id, String title, ArrayList<Task> tasks) {
+        this.id = id;
         this.title = title;
         this.tasks = tasks;
     }
