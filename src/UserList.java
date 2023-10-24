@@ -2,7 +2,9 @@ package src;
 
 import java.util.ArrayList;
 
+
 public class UserList {
+
     private static UserList list;
     public ArrayList<User> users;
     public User user;

@@ -1,6 +1,5 @@
 package src;
 
-import java.util.Scanner;
 public class UI {
     private UserList userList = UserList.getUserList();
     private ProjectList projectList = ProjectList.getProjectList();
