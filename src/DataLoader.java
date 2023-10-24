@@ -13,7 +13,7 @@ public class DataLoader extends DataConstants {
     public static ArrayList<User> loadUsers() {
         try {
             ArrayList<User> users = new ArrayList<User>();
-            FileReader reader = new FileReader("project_manager/json/users.json");
+            FileReader reader = new FileReader("json/users.json");
             JSONArray usersJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJson.size(); i++) {
@@ -30,7 +30,7 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Project> loadProjects() {
         try {
             ArrayList<Project> projects = new ArrayList<Project>();
-            FileReader reader = new FileReader("project_manager/json/users.json");
+            FileReader reader = new FileReader("json/users.json");
             JSONArray projectsJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int projectIndex = 0; projectIndex < projectsJson.size(); projectIndex++) {
@@ -83,11 +83,11 @@ public class DataLoader extends DataConstants {
                         ArrayList<Change> changeLog = new ArrayList<Change>();
                         for (int changeIndex = 0; changeIndex < changeLogJson.size(); changeIndex++) {
                             JSONObject changeJson = (JSONObject) changeLogJson.get(changeIndex);
-                            UUID changeId = UUID.fromString((String)changeJson.get(PROJECT_CHANGE_ID));
-                            String previousSection = (String)changeJson.get(PROJECT_CHANGE_PREVIOUS);
-                            String nextSection = (String)changeJson.get(PROJECT_CHANGE_NEXT);
-                            Date changeDate = (Date)changeJson.get(PROJECT_CHANGE_DATE);
-                            JSONObject userJson = (JSONObject)changeJson.get(PROJECT_CHANGE_USER);
+                            UUID changeId = UUID.fromString((String) changeJson.get(PROJECT_CHANGE_ID));
+                            String previousSection = (String) changeJson.get(PROJECT_CHANGE_PREVIOUS);
+                            String nextSection = (String) changeJson.get(PROJECT_CHANGE_NEXT);
+                            Date changeDate = (Date) changeJson.get(PROJECT_CHANGE_DATE);
+                            JSONObject userJson = (JSONObject) changeJson.get(PROJECT_CHANGE_USER);
                             User userEdited = parseUser(userJson);
                             changeLog.add(new Change(changeId, previousSection, nextSection, changeDate, userEdited));
                         }

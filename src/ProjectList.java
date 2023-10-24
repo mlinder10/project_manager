@@ -13,7 +13,7 @@ public class ProjectList {
     public Project currentProject;
 
     private ProjectList() {
-        this.projects = new ArrayList<Project>();
+        this.projects = DataLoader.loadProjects();
         this.currentProject = null;
     }
 
@@ -23,8 +23,7 @@ public class ProjectList {
         return projectList;
     }
 
-    public static Project getCurrentProject() 
-    {
+    public static Project getCurrentProject() {
         return null;
     }
 
