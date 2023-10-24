@@ -1,10 +1,13 @@
 [
   {
     "id": "936ccc0b-c214-45cb-af10-077a7264a5f2",
-    "owner": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+    "owner": {
+      "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+      "username": "jdoe",
+      "password": "VBefgAf7gf",
+      "email": "johndoe@gmail.com"
+    },
     "title": "CSCE 247 Project Manager",
-    "start": "Thu Oct 12 13:48:55 EDT 2023",
-    "end": "Thu Oct 12 13:48:55 EDT 2023",
     "sections": [
       {
         "title": "DOING",
@@ -14,13 +17,20 @@
             "title": "Example JSON",
             "description": "Create example json files for user and project classes",
             "type": "TEST",
-            "assignedUsers": ["f6c42dd5-ac06-4315-b4f4-0d912ed69501"],
+            "assignedUsers": [
+              {
+                "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                "username": "jdoe",
+                "password": "VBefgAf7gf",
+                "email": "johndoe@gmail.com"
+              }
+            ],
             "completion": false,
             "priority": 1,
             "category": "DOING",
             "comments": [
               {
-                "id": "bf072ae4-e096-4c53-89ba-40988801b163",
+                "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
                 "content": "I love json",
                 "date": "Thu Oct 12 13:48:55 EDT 2023",
                 "user": "ca8f8749-8e6e-4c01-ac06-b64012841a4c",
@@ -29,7 +39,13 @@
             ],
             "changeLog": [
               {
-                "userEdited": "d3e389b5-3b16-4e55-aae7-6ce921cff993",
+                "id": "173a7a0d-4703-4e94-abce-950526a20252",
+                "userEdited": {
+                  "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                  "username": "jdoe",
+                  "password": "VBefgAf7gf",
+                  "email": "johndoe@gmail.com"
+                },
                 "date": "Thu Oct 12 13:48:55 EDT 2023",
                 "from": "TODO",
                 "to": "DOING"
@@ -40,32 +56,36 @@
       }
     ],
     "users": [
-      "ca8f8749-8e6e-4c01-ac06-b64012841a4c",
-      "f6c42dd5-ac06-4315-b4f4-0d912ed69501"
+      {
+        "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+        "username": "jdoe",
+        "password": "VBefgAf7gf",
+        "email": "johndoe@gmail.com"
+      }
     ],
     "comments": [
       {
-        "id": "bvurf83eineranfu3",
+        "id": "cd70e5c0-6c15-4eba-88ab-7885fbd78126",
         "content": "I love CSCE 247",
         "date": "Thu Oct 12 13:48:55 EDT 2023",
-        "user": "ca8f8749-8e6e-4c01-ac06-b64012841a4c",
+        "user": {
+          "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+          "username": "jdoe",
+          "password": "VBefgAf7gf",
+          "email": "johndoe@gmail.com"
+        },
         "comments": []
-      }
-    ],
-    "backlog": [
-      {
-        "id": "cd70e5c0-6c15-4eba-88ab-7885fbd78126",
-        "task": {},
-        "previousSection": "TODO",
-        "nextSection": "DOING",
-        "date": "Thu Oct 12 13:48:55 EDT 2023",
-        "userEdited": "f6c42dd5-ac06-4315-b4f4-0d912ed69501"
       }
     ]
   },
   {
     "id": "96619706-8df9-458d-9795-6fcd3452d494",
-    "owner": "660cddd7-589c-407c-839d-0e29826f182b",
+    "owner": {
+      "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+      "username": "jdoe",
+      "password": "VBefgAf7gf",
+      "email": "johndoe@gmail.com"
+    },
     "title": "CSCE 247 Project Manager",
     "start": "Thu Oct 12 13:48:55 EDT 2023",
     "end": "Thu Oct 12 13:48:55 EDT 2023",
@@ -78,7 +98,14 @@
             "title": "Example JSON",
             "description": "Create example json files for user and project classes",
             "type": "BUG",
-            "assignedUsers": ["d3e389b5-3b16-4e55-aae7-6ce921cff993"],
+            "assignedUsers": [
+              {
+                "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                "username": "jdoe",
+                "password": "VBefgAf7gf",
+                "email": "johndoe@gmail.com"
+              }
+            ],
             "completion": false,
             "priority": 1,
             "category": "DOING",
@@ -87,41 +114,53 @@
                 "id": "49e9380f-5741-4a00-887c-7590cbe1163e",
                 "content": "I love json",
                 "date": "Thu Oct 12 13:48:55 EDT 2023",
-                "user": "53d72f6e-f1ec-4e1f-9371-f9b0fb5af2eb",
+                "user": {
+                  "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                  "username": "jdoe",
+                  "password": "VBefgAf7gf",
+                  "email": "johndoe@gmail.com"
+                },
                 "comments": []
               }
             ],
-            "changeLog": {
-              "userEdited": "d3e389b5-3b16-4e55-aae7-6ce921cff993",
-              "date": "Thu Oct 12 13:48:55 EDT 2023",
-              "from": "TODO",
-              "to": "DOING"
-            }
+            "changeLog": [
+              {
+                "id": "173a7a0d-4703-4e94-abce-950526a20252",
+                "userEdited": {
+                  "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                  "username": "jdoe",
+                  "password": "VBefgAf7gf",
+                  "email": "johndoe@gmail.com"
+                },
+                "date": "Thu Oct 12 13:48:55 EDT 2023",
+                "from": "TODO",
+                "to": "DOING"
+              }
+            ]
           }
         ]
       }
     ],
     "users": [
-      "53d72f6e-f1ec-4e1f-9371-f9b0fb5af2eb",
-      "d3e389b5-3b16-4e55-aae7-6ce921cff993"
+      {
+        "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+        "username": "jdoe",
+        "password": "VBefgAf7gf",
+        "email": "johndoe@gmail.com"
+      }
     ],
     "comments": [
       {
         "id": "7002ee2b-248f-4afe-8771-9ee8fa1f6314",
         "content": "I love CSCE 247",
         "date": "Thu Oct 12 13:48:55 EDT 2023",
-        "user": "53d72f6e-f1ec-4e1f-9371-f9b0fb5af2eb",
+        "user": {
+          "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+          "username": "jdoe",
+          "password": "VBefgAf7gf",
+          "email": "johndoe@gmail.com"
+        },
         "comments": []
-      }
-    ],
-    "backlog": [
-      {
-        "id": "2716359e-b83f-4ab6-86d6-7bdfae323b4a",
-        "task": {},
-        "previousSection": "TODO",
-        "nextSection": "DOING",
-        "date": "Thu Oct 12 13:48:55 EDT 2023",
-        "userEdited": "d3e389b5-3b16-4e55-aae7-6ce921cff993"
       }
     ]
   }

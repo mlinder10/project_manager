@@ -75,7 +75,6 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getSectionJson(Section section) {
         JSONObject sectionJson = new JSONObject();
-        sectionJson.put(PROJECT_SECTION_ID, section.id);
         sectionJson.put(PROJECT_SECTION_TITLE, section.title);
 
         JSONArray tasks = new JSONArray();

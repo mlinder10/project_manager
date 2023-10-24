@@ -1,11 +1,9 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Section {
 
-    public UUID id;
     public String title;
     public ArrayList<Task> tasks;
 
@@ -14,8 +12,7 @@ public class Section {
         this.tasks = new ArrayList<Task>();
     }
 
-    public Section(UUID id, String title, ArrayList<Task> tasks) {
-        this.id = id;
+    public Section(String title, ArrayList<Task> tasks) {
         this.title = title;
         this.tasks = tasks;
     }

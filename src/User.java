@@ -6,12 +6,12 @@ public class User {
 
     public static void main(String[] args) {
         User user1 = new User("jim", "jones", "jj@gmail.com");
-        System.out.println(user1.email); 
+        System.out.println(user1.email);
     }
 
     public UUID id;
     public String username;
-    private String password;
+    public String password;
     public String email;
 
     public User(String username, String password, String email) {
@@ -29,7 +29,7 @@ public class User {
     }
 
     public boolean login(String username, String password) {
-        return this.username == username && this.password == password;
+        return this.username.equals(username) && this.password.equals(password);
     }
 
     public String getPassword() {

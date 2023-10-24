@@ -14,6 +14,7 @@ public class ProjectList {
 
     private ProjectList() {
         this.projects = DataLoader.loadProjects();
+        System.out.println(this.projects.size());
         this.currentProject = null;
     }
 
