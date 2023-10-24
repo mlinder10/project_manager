@@ -118,7 +118,7 @@ public class DataWriter extends DataConstants {
         JSONObject commentJson = new JSONObject();
         commentJson.put(PROJECT_COMMENTS_ID, comment.id.toString());
         commentJson.put(PROJECT_COMMENTS_USER, getUserJson(comment.user));
-        commentJson.put(PROJECT_COMMENTS_DATE, comment.date);
+        commentJson.put(PROJECT_COMMENTS_DATE, comment.date.toString());
         commentJson.put(PROJECT_COMMENTS_CONTENT, comment.content);
 
         JSONArray commentsJson = new JSONArray();
@@ -131,10 +131,10 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getChangeJson(Change change) {
         JSONObject changeJson = new JSONObject();
-        changeJson.put(PROJECT_CHANGE_ID, change.id);
+        changeJson.put(PROJECT_CHANGE_ID, change.id.toString());
         changeJson.put(PROJECT_CHANGE_PREVIOUS, change.previousSection);
         changeJson.put(PROJECT_CHANGE_NEXT, change.nextSection);
-        changeJson.put(PROJECT_CHANGE_DATE, change.date);
+        changeJson.put(PROJECT_CHANGE_DATE, change.date.toString());
         changeJson.put(PROJECT_CHANGE_USER, getUserJson(change.userEdited));
         return changeJson;
     }
