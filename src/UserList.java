@@ -2,7 +2,6 @@ package src;
 
 import java.util.ArrayList;
 
-
 public class UserList {
 
     private static UserList list;
@@ -10,7 +9,7 @@ public class UserList {
     public User user;
 
     private UserList() {
-        users = new ArrayList<User>();
+        users = DataLoader.loadUsers();
         user = null;
     }
 

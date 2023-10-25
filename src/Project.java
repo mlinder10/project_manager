@@ -11,15 +11,6 @@ public class Project {
     public ArrayList<User> users;
     public ArrayList<Section> sections;
 
-    public static void main(String args[]) {
-        Project p = new Project(null, null, null, null, null, null);
-        p.editProjectTitle(null);
-        p.addComent(null);
-        p.removeSection(null);
-        p.addUser(null);
-        p.addComent(null);
-    }
-
     public Project(String title, User owner) {
         this.id = UUID.randomUUID();
         this.owner = owner;

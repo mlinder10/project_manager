@@ -2,6 +2,8 @@ package src;
 
 import java.util.UUID;
 import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,10 +12,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+
     public static ArrayList<User> loadUsers() {
         try {
             ArrayList<User> users = new ArrayList<User>();
-            FileReader reader = new FileReader("project_manager/json/users.json");
+            FileReader reader = new FileReader("json/users.json");
             JSONArray usersJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJson.size(); i++) {
@@ -30,7 +34,7 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Project> loadProjects() {
         try {
             ArrayList<Project> projects = new ArrayList<Project>();
-            FileReader reader = new FileReader("project_manager/json/users.json");
+            FileReader reader = new FileReader("json/projects.json");
             JSONArray projectsJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int projectIndex = 0; projectIndex < projectsJson.size(); projectIndex++) {
@@ -45,8 +49,7 @@ public class DataLoader extends DataConstants {
                 JSONArray sectionsJson = (JSONArray) projectJson.get(PROJECT_SECTIONS);
                 ArrayList<Section> sections = new ArrayList<Section>();
                 for (int sectionIndex = 0; sectionIndex < sectionsJson.size(); sectionIndex++) {
-                    JSONObject sectionJson = (JSONObject) projectJson.get(sectionIndex);
-                    UUID sectionId = UUID.fromString((String) sectionJson.get(PROJECT_SECTION_ID));
+                    JSONObject sectionJson = (JSONObject) sectionsJson.get(sectionIndex);
                     String sectionTitle = (String) sectionJson.get(PROJECT_SECTION_TITLE);
 
                     // tasks parsing
@@ -59,7 +62,7 @@ public class DataLoader extends DataConstants {
                         String taskDescription = (String) taskJson.get(PROJECT_TASK_DESCRIPTION);
                         String taskType = (String) taskJson.get(PROJECT_TASK_TYPE);
                         boolean completion = (boolean) taskJson.get(PROJECT_TASK_COMPLETION);
-                        int priority = (int) taskJson.get(PROJECT_TASK_PRIORITY);
+                        int priority = (int) (long) taskJson.get(PROJECT_TASK_PRIORITY);
 
                         // assigned user parsing
                         JSONArray assignedUsersJson = (JSONArray) taskJson.get(PROJECT_TASK_ASSIGNED_USERS);
@@ -83,18 +86,19 @@ public class DataLoader extends DataConstants {
                         ArrayList<Change> changeLog = new ArrayList<Change>();
                         for (int changeIndex = 0; changeIndex < changeLogJson.size(); changeIndex++) {
                             JSONObject changeJson = (JSONObject) changeLogJson.get(changeIndex);
-                            UUID changeId = UUID.fromString((String)changeJson.get(PROJECT_CHANGE_ID));
-                            String previousSection = (String)changeJson.get(PROJECT_CHANGE_PREVIOUS);
-                            String nextSection = (String)changeJson.get(PROJECT_CHANGE_NEXT);
-                            Date changeDate = (Date)changeJson.get(PROJECT_CHANGE_DATE);
-                            JSONObject userJson = (JSONObject)changeJson.get(PROJECT_CHANGE_USER);
+                            UUID changeId = UUID.fromString((String) changeJson.get(PROJECT_CHANGE_ID));
+                            String previousSection = (String) changeJson.get(PROJECT_CHANGE_PREVIOUS);
+                            String nextSection = (String) changeJson.get(PROJECT_CHANGE_NEXT);
+                            String changeDateString = (String) changeJson.get(PROJECT_CHANGE_DATE);
+                            Date changeDate = dateFormat.parse(changeDateString);
+                            JSONObject userJson = (JSONObject) changeJson.get(PROJECT_CHANGE_USER);
                             User userEdited = parseUser(userJson);
                             changeLog.add(new Change(changeId, previousSection, nextSection, changeDate, userEdited));
                         }
                         tasks.add(new Task(taskId, taskTitle, taskDescription, taskType, assignedUsers, completion,
                                 priority, taskComments, changeLog));
                     }
-                    sections.add(new Section(sectionId, sectionTitle, tasks));
+                    sections.add(new Section(sectionTitle, tasks));
                 }
 
                 // user parsing
@@ -131,10 +135,11 @@ public class DataLoader extends DataConstants {
         return new User(id, username, password, email);
     }
 
-    private static Comment parseComment(JSONObject commentJson) {
+    private static Comment parseComment(JSONObject commentJson) throws ParseException {
         UUID id = UUID.fromString((String) commentJson.get(PROJECT_COMMENTS_ID));
         String content = (String) commentJson.get(PROJECT_COMMENTS_CONTENT);
-        Date date = (Date) commentJson.get(PROJECT_COMMENTS_DATE);
+        String dateString = (String) commentJson.get(PROJECT_COMMENTS_DATE);
+        Date date = dateFormat.parse(dateString);
         User user = parseUser((JSONObject) commentJson.get(PROJECT_COMMENTS_USER));
 
         // recursively parsing comments

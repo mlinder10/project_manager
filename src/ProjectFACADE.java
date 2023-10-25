@@ -26,4 +26,10 @@ public class ProjectFACADE {
         projectList.addUser(user, project);
         return true;
     }
+
+    public boolean saveData() {
+        DataWriter.saveUsers(userList.users);
+        DataWriter.saveProjects(projectList.projects);
+        return true;
+    }
 }
