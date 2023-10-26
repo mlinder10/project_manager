@@ -44,7 +44,9 @@ public class Task {
     }
 
     public boolean addComment(Comment comment) {
-        this.comments.add(comment);
-        return true;
+        if(this.comments.add(comment))
+            return true;
+        else 
+            return false;
     }
 }
