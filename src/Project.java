@@ -35,7 +35,7 @@ public class Project {
         return true;
     }
 
-    public boolean addSection(Section section) {
+    public boolean createSection(Section section) {
         this.sections.add(section);
         return true;
     }

@@ -17,7 +17,7 @@ public class Section {
         this.tasks = tasks;
     }
 
-    public boolean addTask(Task task) {
+    public boolean createTask(Task task) {
         this.tasks.add(task);
         return true;
     }
