@@ -1,5 +1,7 @@
 package src;
 
+import src.statuses.LoginStatus;
+
 public class ProjectFacade {
     private UserList userList;
     private ProjectList projectList;
@@ -13,7 +15,7 @@ public class ProjectFacade {
         return projectList.currentProject;
     }
 
-    public boolean login(String username, String password) {
+    public LoginStatus login(String username, String password) {
         return userList.login(username, password);
     }
 
