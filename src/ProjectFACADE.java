@@ -1,5 +1,6 @@
 package src;
 
+import src.statuses.DeleteProjectStatus;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
@@ -28,7 +29,7 @@ public class ProjectFACADE {
         return projectList.createProject(userList.user, title);
     }
 
-    public boolean deleteProject(Project project) {
+    public DeleteProjectStatus deleteProject(Project project) {
         return projectList.deleteProject(project);
     }
 

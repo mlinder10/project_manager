@@ -5,7 +5,8 @@ package src;
  */
 
 import java.util.ArrayList;
-//import src.statuses
+import src.statuses.CreateProjectStatus;
+import src.statuses.DeleteProjectStatus;
 
 public class ProjectList {
 
@@ -37,8 +38,8 @@ public class ProjectList {
             return false;
     }
 
-    public boolean deleteProject(Project project) {
-      //  if(project = null){
+    public DeleteProjectStatus deleteProject(Project project) {
+        if(project = null){
             
         }
         if (projects.remove(project))
