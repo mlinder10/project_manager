@@ -37,4 +37,9 @@ public class Comment {
         else 
             return false;
     }
+    
+    public boolean deleteComment(Comment comment) {
+        this.comments.remove(comment);
+        return true;
+    }
 }

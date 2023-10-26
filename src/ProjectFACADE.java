@@ -3,11 +3,11 @@ package src;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
-public class ProjectFACADE {
+public class ProjectFacade {
     private UserList userList;
     private ProjectList projectList;
 
-    public ProjectFACADE() {
+    public ProjectFacade() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
     }
@@ -54,12 +54,37 @@ public class ProjectFACADE {
     }
 
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
-        currentSection.removeTask(task);
-        nextSection.createTask(task);
+        if (!currentSection.removeTask(task))
+            return false;
+        return nextSection.createTask(task);
+    }
+
+    public boolean createComment(Project project, String content, User user) {
+        return project.addComent(new Comment(content, user));
+    }
+
+    public boolean createComment(Task task, String content, User user) {
+        return task.addComment(new Comment(content, user));
+    }
+
+    public boolean createComment(Comment comment, String content, User user) {
+        return comment.addComment(new Comment(content, user));
+    }
+
+    public boolean deleteComment(Project project, Comment comment) {
+        return project.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Task task, Comment comment) {
+        return task.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Comment rootComment, Comment comment) {
+        return rootComment.deleteComment(comment);
     }
 
     public boolean addUserToProject(User user, Project project) {
-        return projectList.addUser(user, project);
+        return project.addUser(user);
     }
 
     public boolean saveData() {

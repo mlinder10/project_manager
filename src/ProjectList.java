@@ -50,15 +50,4 @@ public class ProjectList {
     public boolean removeSection(Section section) {
         return currentProject.removeSection(section);
     }
-
-    public boolean addUser(User user, Project project) {
-        for (Project projectElement : projects) {
-            if (project.id.equals(projectElement.id)) {
-                project.users.add(user);
-            }
-            else 
-            return false;
-        }
-        return true;
-    }
 }
