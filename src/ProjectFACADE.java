@@ -1,6 +1,7 @@
 package src;
 
 import src.statuses.LoginStatus;
+import src.statuses.RegisterStatus;
 
 public class ProjectFacade {
     private UserList userList;
@@ -19,7 +20,7 @@ public class ProjectFacade {
         return userList.login(username, password);
     }
 
-    public boolean register(String username, String password, String email) {
+    public RegisterStatus register(String username, String password, String email) {
         return userList.register(password, username, email);
     }
 
