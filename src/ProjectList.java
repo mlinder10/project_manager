@@ -35,8 +35,10 @@ public class ProjectList {
     }
 
     public boolean deleteProject(Project project) {
-        projects.remove(project);
-        return true;
+        if (projects.remove(project))
+            return true;
+        else 
+            return false;
     }
 
     public boolean addUser(User user, Project project) {
@@ -44,6 +46,8 @@ public class ProjectList {
             if (project.id.equals(projectElement.id)) {
                 project.users.add(user);
             }
+            else 
+            return false;
         }
         return true;
     }
