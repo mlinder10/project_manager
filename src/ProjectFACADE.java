@@ -48,9 +48,8 @@ public class ProjectFacade {
 
     }
 
-    public boolean removeTask(Section section, Task task) {
-        section.removeTask(task);
-        return true;
+    public boolean delete(Section section, Task task) {
+        return section.removeTask(task);
     }
 
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
