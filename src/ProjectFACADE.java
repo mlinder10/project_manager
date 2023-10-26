@@ -1,10 +1,10 @@
 package src;
 
-public class ProjectFacade {
+public class ProjectFACADE {
     private UserList userList;
     private ProjectList projectList;
 
-    public ProjectFacade() {
+    public ProjectFACADE() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
     }
