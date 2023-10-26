@@ -54,4 +54,9 @@ public class Project {
         this.comments.add(comment);
         return true;
     }
+
+    public boolean deleteComment(Comment comment) {
+        this.comments.remove(comment);
+        return true;
+    }
 }

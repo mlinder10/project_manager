@@ -1,5 +1,5 @@
 package src.statuses;
 
-public enum DeleteTaskStatus {
+public enum MoveTaskStatus {
     SUCCESS
 }

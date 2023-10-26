@@ -1,5 +1,6 @@
 package src;
 
+import src.statuses.CreateProjectStatus;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
@@ -24,7 +25,7 @@ public class ProjectFACADE {
         return userList.register(password, username, email);
     }
 
-    public boolean createProject(String title) {
+    public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
 
@@ -36,15 +37,15 @@ public class ProjectFACADE {
         return projectList.createSection(title);
     }
 
-    public boolean removeSection(Section section) {
-        return projectList.removeSection(section);
+    public boolean removeSection(Project project, Section section) {
+        return project.removeSection(section);
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
-        return section.createTask(new Task(title, description, priority, type));
+        return section.createTask(new Task(title,description,priority,type));
     }
 
-    public boolean removeTask(Section section, Task task) {
+    public boolean delete(Section section, Task task) {
         return section.removeTask(task);
     }
 
@@ -66,8 +67,16 @@ public class ProjectFACADE {
         return comment.addComment(new Comment(content, user));
     }
 
-    public boolean deleteComment() {
-        return true;
+    public boolean deleteComment(Project project, Comment comment) {
+        return project.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Task task, Comment comment) {
+        return task.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Comment rootComment, Comment comment) {
+        return rootComment.deleteComment(comment);
     }
 
     public boolean addUserToProject(User user, Project project) {
