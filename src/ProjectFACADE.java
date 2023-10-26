@@ -1,5 +1,6 @@
 package src;
 
+import src.statuses.CreateProjectStatus;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
@@ -24,7 +25,7 @@ public class ProjectFacade {
         return userList.register(password, username, email);
     }
 
-    public boolean createProject(String title) {
+    public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
 

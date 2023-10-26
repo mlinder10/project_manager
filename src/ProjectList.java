@@ -6,6 +6,8 @@ package src;
 
 import java.util.ArrayList;
 
+import src.statuses.CreateProjectStatus;
+
 public class ProjectList {
 
     private static ProjectList projectList;
@@ -28,12 +30,10 @@ public class ProjectList {
         return null;
     }
 
-    public boolean createProject(User user, String title) {
+    public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
-        if(projects.add(newProject))
-            return true;
-        else
-            return false;
+        projects.add(newProject);
+        return CreateProjectStatus.SUCCESS;
     }
 
     public boolean deleteProject(Project project) {
