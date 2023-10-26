@@ -3,11 +3,11 @@ package src;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
-public class ProjectFacade {
+public class ProjectFACADE {
     private UserList userList;
     private ProjectList projectList;
 
-    public ProjectFacade() {
+    public ProjectFACADE() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
     }
