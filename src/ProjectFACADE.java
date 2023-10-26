@@ -37,12 +37,12 @@ public class ProjectFacade {
         return projectList.createSection(title);
     }
 
-    public boolean delete(Section section) {
-        return projectList.removeSection(section);
+    public boolean removeSection(Project project, Section section) {
+        return project.removeSection(section);
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
-        return section.createTask(new Task(title, description, priority, type));
+        return section.createTask(new Task(title,description,priority,type));
     }
 
     public boolean delete(Section section, Task task) {
