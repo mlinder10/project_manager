@@ -36,7 +36,7 @@ public class ProjectFacade {
         return projectList.createSection(title);
     }
 
-    public boolean removeSection(Section section) {
+    public boolean delete(Section section) {
         return projectList.removeSection(section);
     }
 
@@ -44,7 +44,7 @@ public class ProjectFacade {
         return section.createTask(new Task(title, description, priority, type));
     }
 
-    public boolean removeTask(Section section, Task task) {
+    public boolean delete(Section section, Task task) {
         return section.removeTask(task);
     }
 
