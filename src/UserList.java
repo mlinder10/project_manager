@@ -48,11 +48,11 @@ public class UserList {
 
         // empty password
         if (password == null || password.equals(""))
-            return RegisterStatus.EMPTY_USERNAME;
+            return RegisterStatus.EMPTY_PASSWORD;
 
         // empty email
         if (email == null || email.equals(""))
-            return RegisterStatus.EMPTY_USERNAME;
+            return RegisterStatus.EMPTY_EMAIL;
 
         User newUser = new User(username, password, email);
         users.add(newUser);
