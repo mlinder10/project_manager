@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import src.statuses.CreateProjectStatus;
 import src.statuses.DeleteProjectStatus;
 
-import src.statuses.CreateProjectStatus;
-
 public class ProjectList {
 
     private static ProjectList projectList;

@@ -1,6 +1,7 @@
 package src;
 
 import src.statuses.CreateProjectStatus;
+import src.statuses.DeleteProjectStatus;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
