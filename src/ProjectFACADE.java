@@ -49,12 +49,29 @@ public class ProjectFACADE {
     }
 
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
-        if (!currentSection.removeTask(task)) return false;
+        if (!currentSection.removeTask(task))
+            return false;
         return nextSection.createTask(task);
     }
 
+    public boolean createComment(Project project, String content, User user) {
+        return project.addComent(new Comment(content, user));
+    }
+
+    public boolean createComment(Task task, String content, User user) {
+        return task.addComment(new Comment(content, user));
+    }
+
+    public boolean createComment(Comment comment, String content, User user) {
+        return comment.addComment(new Comment(content, user));
+    }
+
+    public boolean deleteComment() {
+        return true;
+    }
+
     public boolean addUserToProject(User user, Project project) {
-        return projectList.addUser(user, project);
+        return project.addUser(user);
     }
 
     public boolean saveData() {
