@@ -36,13 +36,13 @@ public class ProjectFacade {
     }
 
     public boolean removeSection(Project project, Section section) {
-        
+        return project.removeSection(section);
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
         
         Task newTask= new Task(title,description,priority,type);
-        section.addTask(newTask);
+        section.createTask(newTask);
         return true;
 
     }
@@ -54,7 +54,7 @@ public class ProjectFacade {
 
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
         currentSection.removeTask(task);
-        nextSection.addTask(task);
+        nextSection.createTask(task);
     }
 
     public boolean addUserToProject(User user, Project project) {
