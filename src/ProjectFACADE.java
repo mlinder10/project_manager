@@ -41,10 +41,9 @@ public class ProjectFacade {
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
-        
         Task newTask= new Task(title,description,priority,type);
-        section.createTask(newTask);
-        return true;
+        return section.createTask(newTask);
+        
 
     }
 
