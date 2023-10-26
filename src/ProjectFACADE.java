@@ -66,8 +66,16 @@ public class ProjectFacade {
         return comment.addComment(new Comment(content, user));
     }
 
-    public boolean deleteComment() {
-        return true;
+    public boolean deleteComment(Project project, Comment comment) {
+        return project.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Task task, Comment comment) {
+        return task.deleteComment(comment);
+    }
+
+    public boolean deleteComment(Comment rootComment, Comment comment) {
+        return rootComment.deleteComment(comment);
     }
 
     public boolean addUserToProject(User user, Project project) {
