@@ -9,6 +9,10 @@ public class ProjectFacade {
         this.projectList = ProjectList.getProjectList();
     }
 
+    public Project getCurrentProject() {
+        return projectList.currentProject;
+    }
+
     public boolean login(String username, String password) {
         return userList.login(username, password);
     }

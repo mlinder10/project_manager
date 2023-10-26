@@ -29,6 +29,9 @@ public class User {
     }
 
     public boolean login(String username, String password) {
+        if ((username == null || username.equals("")) && (password == null || password.equals(""))) return false;
+        if (username == null || username.equals("")) return false;
+        if (password == null || password.equals("")) return false;
         return this.username.equals(username) && this.password.equals(password);
     }
 
