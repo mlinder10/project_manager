@@ -1,5 +1,6 @@
 package src;
 
+import src.statuses.CreateProjectStatus;
 import src.statuses.LoginStatus;
 import src.statuses.RegisterStatus;
 
@@ -24,7 +25,7 @@ public class ProjectFACADE {
         return userList.register(password, username, email);
     }
 
-    public boolean createProject(String title) {
+    public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
 
@@ -41,10 +42,7 @@ public class ProjectFACADE {
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
-        Task newTask= new Task(title,description,priority,type);
-        return section.createTask(newTask);
-        
-
+        return section.createTask(new Task(title,description,priority,type));
     }
 
     public boolean delete(Section section, Task task) {
