@@ -18,12 +18,16 @@ public class Section {
     }
 
     public boolean createTask(Task task) {
-        this.tasks.add(task);
-        return true;
+        if(this.tasks.add(task))
+            return true;
+        else  
+            return false;
     }
 
     public boolean removeTask(Task task) {
-        this.tasks.remove(task);
-        return true;
+        if(this.tasks.remove(task))
+            return true;
+        else 
+            return false;
     }
 }
