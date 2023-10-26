@@ -22,27 +22,35 @@ public class ProjectFacade {
     }
 
     public boolean deleteProject(Project project) {
-        return true;
+        return projectList.deleteProject(project);
     }
 
     public boolean createSection(Project project, String title) {
-        return true;
+        return projectList.createSection(project, title);
     }
 
     public boolean removeSection(Project project, Section section) {
-        return true;
+        return projectList.removeSection(project,section);
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
+        
+        Task newTask= new Task(title,description,priority,type);
+        section.addTask(newTask);
         return true;
+
     }
 
     public boolean removeTask(Section section, Task task) {
+        section.removeTask(task);
         return true;
     }
 
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
-        return true;
+        currentSection.removeTask(task);
+        nextSection.addTask(task);
+        
+
     }
 
     public boolean addUserToProject(User user, Project project) {
