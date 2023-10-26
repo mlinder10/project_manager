@@ -43,6 +43,14 @@ public class ProjectList {
             return false;
     }
 
+    public boolean createSection(String title) {
+        return currentProject.createSection(new Section(title));
+    }
+
+    public boolean removeSection(Section section) {
+        return currentProject.removeSection(section);
+    }
+
     public boolean addUser(User user, Project project) {
         for (Project projectElement : projects) {
             if (project.id.equals(projectElement.id)) {
