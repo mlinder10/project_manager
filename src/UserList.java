@@ -54,6 +54,16 @@ public class UserList {
         if (email == null || email.equals(""))
             return RegisterStatus.EMPTY_EMAIL;
 
+        // username taken
+        for (User user : users) {
+            if (user.username.equals(username))
+                return RegisterStatus.USERNAME_TAKEN;
+        }
+
+        // short password
+        if (password.length() < 8)
+            return RegisterStatus.INVALID_PASSWORD;
+
         User newUser = new User(username, password, email);
         users.add(newUser);
         return RegisterStatus.SUCCESS;
