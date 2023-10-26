@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 import src.statuses.LoginStatus;
+import src.statuses.RegisterStatus;
 
 public class UserList {
 
@@ -21,16 +22,60 @@ public class UserList {
         return list;
     }
 
-    public boolean register(String email, String username, String password) {
+    public RegisterStatus register(String email, String username, String password) {
+        // all empty
+        if ((username == null || username.equals("")) && (password == null || password.equals(""))
+                && (email == null || email.equals("")))
+            return RegisterStatus.EMPTY_USERNAME_AND_PASSWORD_AND_EMAIL;
+
+        // empty username and password
+        if ((username == null || username.equals("")) && (password == null || password.equals("")))
+            return RegisterStatus.EMPTY_USERNAME_AND_PASSWORD;
+
+        // empty username and email
+        if ((username == null || username.equals(""))
+                && (email == null || email.equals("")))
+            return RegisterStatus.EMPTY_USERNAME_AND_EMAIL;
+
+        // empty email and password
+        if ((password == null || password.equals(""))
+                && (email == null || email.equals("")))
+            return RegisterStatus.EMPTY_PASSWORD_AND_EMAIL;
+
+        // empty username
+        if (username == null || username.equals(""))
+            return RegisterStatus.EMPTY_USERNAME;
+
+        // empty password
+        if (password == null || password.equals(""))
+            return RegisterStatus.EMPTY_PASSWORD;
+
+        // empty email
+        if (email == null || email.equals(""))
+            return RegisterStatus.EMPTY_EMAIL;
+
+        // username taken
+        for (User user : users) {
+            if (user.username.equals(username))
+                return RegisterStatus.USERNAME_TAKEN;
+        }
+
+        // short password
+        if (password.length() < 8)
+            return RegisterStatus.INVALID_PASSWORD;
+
         User newUser = new User(username, password, email);
         users.add(newUser);
-        return true;
+        return RegisterStatus.SUCCESS;
     }
 
     public LoginStatus login(String username, String password) {
-        if ((username == null || username.equals("")) && (password == null || password.equals(""))) return LoginStatus.EMPTY_USERNAME_AND_PASSWORD;
-        if (username == null || username.equals("")) return LoginStatus.EMPTY_USERNAME;
-        if (password == null || password.equals("")) return LoginStatus.EMPTY_PASSWORD;
+        if ((username == null || username.equals("")) && (password == null || password.equals("")))
+            return LoginStatus.EMPTY_USERNAME_AND_PASSWORD;
+        if (username == null || username.equals(""))
+            return LoginStatus.EMPTY_USERNAME;
+        if (password == null || password.equals(""))
+            return LoginStatus.EMPTY_PASSWORD;
         for (User userElement : users) {
             if (userElement.login(username, password)) {
                 user = userElement;
