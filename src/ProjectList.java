@@ -30,13 +30,25 @@ public class ProjectList {
 
     public boolean createProject(User user, String title) {
         Project newProject = new Project(title, user);
-        projects.add(newProject);
-        return true;
+        if(projects.add(newProject))
+            return true;
+        else
+            return false;
     }
 
     public boolean deleteProject(Project project) {
-        projects.remove(project);
-        return true;
+        if (projects.remove(project))
+            return true;
+        else 
+            return false;
+    }
+
+    public boolean createSection(String title) {
+        return currentProject.createSection(new Section(title));
+    }
+
+    public boolean removeSection(Section section) {
+        return currentProject.removeSection(section);
     }
 
     public boolean addUser(User user, Project project) {
@@ -44,6 +56,8 @@ public class ProjectList {
             if (project.id.equals(projectElement.id)) {
                 project.users.add(user);
             }
+            else 
+            return false;
         }
         return true;
     }

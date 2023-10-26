@@ -2,6 +2,8 @@ package src;
 
 import java.util.ArrayList;
 
+import src.statuses.LoginStatus;
+
 public class UserList {
 
     private static UserList list;
@@ -25,14 +27,17 @@ public class UserList {
         return true;
     }
 
-    public boolean login(String username, String password) {
+    public LoginStatus login(String username, String password) {
+        if ((username == null || username.equals("")) && (password == null || password.equals(""))) return LoginStatus.EMPTY_USERNAME_AND_PASSWORD;
+        if (username == null || username.equals("")) return LoginStatus.EMPTY_USERNAME;
+        if (password == null || password.equals("")) return LoginStatus.EMPTY_PASSWORD;
         for (User userElement : users) {
             if (userElement.login(username, password)) {
                 user = userElement;
-                return true;
+                return LoginStatus.SUCCESS;
             }
         }
-        return false;
+        return LoginStatus.INVALID_CREDENTIALS;
     }
 
     public boolean logout() {

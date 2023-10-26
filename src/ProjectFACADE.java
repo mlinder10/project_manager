@@ -1,5 +1,7 @@
 package src;
 
+import src.statuses.LoginStatus;
+
 public class ProjectFacade {
     private UserList userList;
     private ProjectList projectList;
@@ -9,7 +11,11 @@ public class ProjectFacade {
         this.projectList = ProjectList.getProjectList();
     }
 
-    public boolean login(String username, String password) {
+    public Project getCurrentProject() {
+        return projectList.currentProject;
+    }
+
+    public LoginStatus login(String username, String password) {
         return userList.login(username, password);
     }
 
@@ -25,12 +31,12 @@ public class ProjectFacade {
         return projectList.deleteProject(project);
     }
 
-    public boolean createSection(Project project, String title) {
-        return projectList.createSection(project, title);
+    public boolean createSection(String title) {
+        return projectList.createSection(title);
     }
 
     public boolean removeSection(Project project, Section section) {
-        return projectList.removeSection(project,section);
+        
     }
 
     public boolean createTask(Section section, String title, String description, int priority, String type) {
@@ -49,8 +55,6 @@ public class ProjectFacade {
     public boolean moveTask(Section currentSection, Section nextSection, Task task) {
         currentSection.removeTask(task);
         nextSection.addTask(task);
-        
-
     }
 
     public boolean addUserToProject(User user, Project project) {
