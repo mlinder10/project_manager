@@ -29,25 +29,35 @@ public class ProjectList {
     }
 
     public static Project getCurrentProject() {
+        return projectList.currentProject;
+    }
+
+    public static Project openProject(String title) {
+        for (Project project : projectList.projects) {
+            if (project.title.equals(title)) {
+                projectList.currentProject = project;
+                return project;
+            }
+        }
         return null;
     }
 
-    public CreateProjectStatus createProject(User user, String title) {
+    public static CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
-        projects.add(newProject);
+        projectList.projects.add(newProject);
         return CreateProjectStatus.SUCCESS;
     }
 
-    public DeleteProjectStatus deleteProject(Project project) {
-        projects.remove(project);
+    public static DeleteProjectStatus deleteProject(Project project) {
+        projectList.projects.remove(project);
         return DeleteProjectStatus.SUCCESS;
     }
 
-    public CreateSectionStatus createSection(String title) {
-        return currentProject.createSection(new Section(title));
+    public static CreateSectionStatus createSection(String title) {
+        return projectList.currentProject.createSection(new Section(title));
     }
 
-    public DeleteSectionStatus removeSection(Section section) {
-        return currentProject.deleteSection(section);
+    public static DeleteSectionStatus removeSection(Section section) {
+        return projectList.currentProject.deleteSection(section);
     }
 }
