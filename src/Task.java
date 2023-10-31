@@ -41,6 +41,18 @@ public class Task {
         this.assignedUsers = new ArrayList<User>();
     }
 
+    /**
+     * creates unique id's for the class Task along with the other strings, booleans, integers, and array lists
+     * @param id universal unique identifer id
+     * @param title name of the task
+     * @param description overview of the task
+     * @param type type of task which include bug, tester, or new feature
+     * @param assignedUsers users that can work on that specific task
+     * @param completion completion boolean of the task (true or false)
+     * @param priority a 1-3 priority of the task. 1 being the highest and 3 being the lowest
+     * @param comments comments under the task 
+     * @param changeLog history of changes that have been made to the task
+     */
     public Task(UUID id, String title, String description, String type, ArrayList<User> assignedUsers,
             boolean completion, int priority, ArrayList<Comment> comments,
             ArrayList<Change> changeLog) {
@@ -55,21 +67,41 @@ public class Task {
         this.changeLog = changeLog;
     }
 
+    /**
+     * Allows a user to create a comment for a task
+     * @param comment comment for the task
+     * @return returns a completed comment specified for the task
+     */
     public CreateCommentStatus createComment(Comment comment) {
         this.comments.add(comment);
         return CreateCommentStatus.SUCCESS;
     }
 
+    /**
+     * Deletes a comment for the task
+     * @param comment comment for the task
+     * @return returns the deleted comment as successful
+     */
     public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
         return DeleteCommentStatus.SUCCESS;
     }
 
+    /**
+     * Adds a user to a task
+     * @param user someone who is being assigned to a task
+     * @return returns true because a user is being added
+     */
     public boolean addAssignedUser(User user) {
         assignedUsers.add(user);
         return true;
     }
 
+    /**
+     * Removes a user from the task
+     * @param user someone who has been assigned to a task
+     * @return returns true because the user has been removed from the task
+     */
     public boolean removeAssignedUser(User user) {
         assignedUsers.remove(user);
         return true;
