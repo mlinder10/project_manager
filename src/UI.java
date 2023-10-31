@@ -5,11 +5,4 @@ public class UI {
 
     }
 
-    public void ScenarioTwo() {
-
-    }
-
-    public void ScenarioThree() {
-
-    }
 }
