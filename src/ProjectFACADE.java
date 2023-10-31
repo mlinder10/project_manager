@@ -70,6 +70,13 @@ public class ProjectFACADE {
         return userList.user;
     }
 
+    public User getUser(String username) {
+        for (User user : userList.users) {
+            if (user.username.equals(username)) return user;
+        }
+        return null;
+    }
+
 /**
  * gets project
  * @param title
