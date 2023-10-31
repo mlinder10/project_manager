@@ -15,59 +15,134 @@ import src.statuses.MoveTaskStatus;
 import src.statuses.RegisterStatus;
 import src.statuses.SaveDataStatus;
 
+/**
+ * Facade for project
+ */
 public class ProjectFACADE {
     private UserList userList;
     private ProjectList projectList;
 
+/**
+ * Contrustor cretes new user list and project list
+ */
     public ProjectFACADE() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
     }
 
+/**
+ * Gets project currently being worked on
+ * @return current project
+ */
     public Project getCurrentProject() {
         return projectList.currentProject;
     }
 
+/**
+ * Logs in user
+ * @param username
+ * @param password
+ * @return login status
+ */
     public LoginStatus login(String username, String password) {
         return userList.login(username, password);
     }
 
+/**
+ * Registers new user
+ * @param username
+ * @param password
+ * @param email
+ * @return regerster status
+ */
     public RegisterStatus register(String username, String password, String email) {
         return userList.register(password, username, email);
     }
 
+/**
+ * logs user out
+ * @return logout status
+ */
     public LogoutStatus logout() {
         return userList.logout();
     }
 
+/**
+ * gets a project
+ * @param title
+ * @return Project
+ */
     public Project getProject(String title) {
         return projectList.openProject(title);
     }
 
+/**
+ * Makes new project
+ * @param title
+ * @return If project is created
+ */
     public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
 
+/**
+ * Deletes project
+ * @param project
+ * @return If project is deleted
+ */
     public DeleteProjectStatus deleteProject(Project project) {
         return projectList.deleteProject(project);
     }
 
+/**
+ * Creates a section
+ * @param title
+ * @return If section is created
+ */
     public CreateSectionStatus createSection(String title) {
         return projectList.createSection(title);
     }
 
+/**
+ * deletes a section
+ * @param project
+ * @param section
+ * @return If section is delted
+ */
     public DeleteSectionStatus deleteSection(Project project, Section section) {
         return project.deleteSection(section);
     }
 
+/**
+ * creates a task
+ * @param section
+ * @param title
+ * @param description
+ * @param priority
+ * @param type
+ * @return If task is created
+ */
     public CreateTaskStatus createTask(Section section, String title, String description, int priority, String type) {
         return section.createTask(new Task(title, description, priority, type));
     }
 
+/**
+ * Deletes task
+ * @param section
+ * @param task
+ * @return if task is deleted
+ */
     public DeleteTaskStatus deleteTask(Section section, Task task) {
         return section.deleteTask(task);
     }
 
+/**
+ * Moves task
+ * @param currentSection
+ * @param nextSection
+ * @param task
+ * @return if task is moved
+ */
     public MoveTaskStatus moveTask(Section currentSection, Section nextSection, Task task) {
         if (currentSection.deleteTask(task) != DeleteTaskStatus.SUCCESS)
             return MoveTaskStatus.DELETE_ERROR;
@@ -77,42 +152,103 @@ public class ProjectFACADE {
         return MoveTaskStatus.SUCCESS;
     }
 
+/**
+ * Makes comment on project
+ * @param project
+ * @param content
+ * @param user
+ * @return if commment is moved
+ */
     public CreateCommentStatus createComment(Project project, String content, User user) {
         return project.createComment(new Comment(content, user));
     }
 
+/**
+ * Makes comment on task
+ * @param task
+ * @param content
+ * @param user
+ * @return if comment is created 
+ */
     public CreateCommentStatus createComment(Task task, String content, User user) {
         return task.createComment(new Comment(content, user));
     }
 
+/**
+ * makes comment on comment
+ * @param comment
+ * @param content
+ * @param user
+ * @return if comment is created
+ */
     public CreateCommentStatus createComment(Comment comment, String content, User user) {
         return comment.createComment(new Comment(content, user));
     }
 
+/**
+ * deletes comment on project
+ * @param project
+ * @param comment
+ * @return if comment is deleted
+ */
     public DeleteCommentStatus deleteComment(Project project, Comment comment) {
         return project.deleteComment(comment);
     }
 
+/**
+ * deletes comment on task
+ * @param task
+ * @param comment
+ * @return if comment is delted
+ */
     public DeleteCommentStatus deleteComment(Task task, Comment comment) {
         return task.deleteComment(comment);
     }
 
+/**
+ * deletes comment on coment
+ * @param rootComment
+ * @param comment
+ * @return if comment is deleted
+ */
     public DeleteCommentStatus deleteComment(Comment rootComment, Comment comment) {
         return rootComment.deleteComment(comment);
     }
 
+/**
+ * adds user to project
+ * @param user
+ * @param project
+ * @return if user is added
+ */
     public AddUserStatus addUserToProject(User user, Project project) {
         return project.addUser(user);
     }
 
+/**
+ * adds user to task
+ * @param task
+ * @param user
+ * @return if user is added
+ */
     public boolean addAssignedUser(Task task, User user) {
         return task.addAssignedUser(user);
     }
 
+/**
+ * removes user from task
+ * @param task
+ * @param user
+ * @return if user is removed
+ */
     public boolean removeAssignedUser(Task task, User user) {
         return task.removeAssignedUser(user);
     }
 
+/**
+ * saves data
+ * @return if data is saved
+ */
     public SaveDataStatus saveData() {
         boolean userRes = DataWriter.saveUsers(userList.users);
         boolean projectRes = DataWriter.saveProjects(projectList.projects);
