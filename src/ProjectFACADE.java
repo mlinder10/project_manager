@@ -66,6 +66,10 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
+    public User getSelfUser() {
+        return userList.user;
+    }
+
 /**
  * gets project
  * @param title
