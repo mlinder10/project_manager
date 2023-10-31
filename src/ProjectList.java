@@ -53,8 +53,10 @@ public class ProjectList {
         return DeleteProjectStatus.SUCCESS;
     }
 
-    public CreateSectionStatus createSection(String title) {
-        return projectList.currentProject.createSection(new Section(title));
+    public Section createSection(String title) {
+        Section section = new Section(title);
+        projectList.currentProject.createSection(section);
+        return section;
     }
 
     public DeleteSectionStatus removeSection(Section section) {

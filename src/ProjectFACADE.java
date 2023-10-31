@@ -52,12 +52,18 @@ public class ProjectFACADE {
         return projectList.deleteProject(project);
     }
 
-    public CreateSectionStatus createSection(String title) {
+    public Section createSection(String title) {
         return projectList.createSection(title);
     }
 
     public DeleteSectionStatus deleteSection(Project project, Section section) {
         return project.deleteSection(section);
+    }
+
+    public Task createTask(String sectionTitle, String title, String description, int priority, String type) {
+        Task task = new Task(title, description, priority, type);
+        projectList.currentProject.getSection(sectionTitle).createTask(task);
+        return task;
     }
 
     public CreateTaskStatus createTask(Section section, String title, String description, int priority, String type) {
@@ -77,16 +83,16 @@ public class ProjectFACADE {
         return MoveTaskStatus.SUCCESS;
     }
 
-    public CreateCommentStatus createComment(Project project, String content, User user) {
-        return project.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Project project, String content) {
+        return project.createComment(new Comment(content, userList.user));
     }
 
-    public CreateCommentStatus createComment(Task task, String content, User user) {
-        return task.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Task task, String content) {
+        return task.createComment(new Comment(content, userList.user));
     }
 
-    public CreateCommentStatus createComment(Comment comment, String content, User user) {
-        return comment.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Comment comment, String content) {
+        return comment.createComment(new Comment(content, userList.user));
     }
 
     public DeleteCommentStatus deleteComment(Project project, Comment comment) {

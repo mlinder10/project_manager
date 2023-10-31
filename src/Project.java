@@ -41,6 +41,13 @@ public class Project {
         return true;
     }
 
+    public Section getSection(String title) {
+        for (Section section : sections) {
+            if (section.title.equals(title)) return section;
+        }
+        return null;
+    }
+
     public CreateSectionStatus createSection(Section section) {
         this.sections.add(section);
         return CreateSectionStatus.SUCCESS;
