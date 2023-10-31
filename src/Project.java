@@ -63,11 +63,13 @@ public class Project {
         return true;
     }
 
-    /**
-     * Creates a section by adding a section to the array list of sections 
-     * @param section holds sections in an array list of sections 
-     * @return returns the success status when a new section is created 
-     */
+    public Section getSection(String title) {
+        for (Section section : sections) {
+            if (section.title.equals(title)) return section;
+        }
+        return null;
+    }
+
     public CreateSectionStatus createSection(Section section) {
         this.sections.add(section);
         return CreateSectionStatus.SUCCESS;
