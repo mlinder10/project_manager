@@ -75,6 +75,10 @@ public class ProjectFACADE {
         return projectList.openProject(title);
     }
 
+    public Project openProject(String title) {
+        return projectList.openProject(title);
+    }
+
 /**
  * Makes new project
  * @param title
@@ -93,7 +97,7 @@ public class ProjectFACADE {
         return projectList.deleteProject(project);
     }
 
-    public CreateSectionStatus createSection(String title) {
+    public Section createSection(String title) {
         return projectList.createSection(title);
     }
 
@@ -133,6 +137,25 @@ public class ProjectFACADE {
         return section.createTask(new Task(title, description, priority, type));
     }
 
+    public boolean moveTask(String taskTitle, String sectionTitle) {
+        Section oldSection = null;
+        Task movingTask = null;
+        for (Section section : projectList.currentProject.sections) {
+            for (Task task : section.tasks) {
+                if (task.title.equals(taskTitle)) {
+                    oldSection = section;
+                    movingTask = task;
+                }
+            }
+        }
+
+        if (oldSection == null) return false;
+        oldSection.tasks.remove(movingTask);
+        getSection(sectionTitle).createTask(movingTask);
+
+        return true;
+    }
+
 /**
  * Deletes task
  * @param section
@@ -163,12 +186,12 @@ public class ProjectFACADE {
         return project.createComment(new Comment(content, user));
     }
 
-    public CreateCommentStatus createComment(Task task, String content, User user) {
-        return task.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Task task, String content) {
+        return task.createComment(new Comment(content, userList.user));
     }
 
-    public CreateCommentStatus createComment(Comment comment, String content, User user) {
-        return comment.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Comment comment, String content) {
+        return comment.createComment(new Comment(content, userList.user));
     }
 
 /**
