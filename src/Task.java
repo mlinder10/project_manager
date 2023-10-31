@@ -21,6 +21,13 @@ public class Task {
     public ArrayList<Comment> comments;
     public ArrayList<Change> changeLog;
 
+    /**
+     * creates getters and setters for the class Task
+     * @param title name of the task
+     * @param description overview of the task
+     * @param priority a 1-3 priority of the task. 1 being the highest and 3 being the lowest
+     * @param type type of task which include bug, tester, or new feature
+     */
     public Task(String title, String description, int priority, String type) {
         this.id = UUID.randomUUID();
         this.type = type;
