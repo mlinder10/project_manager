@@ -6,6 +6,9 @@ import src.statuses.LoginStatus;
 import src.statuses.LogoutStatus;
 import src.statuses.RegisterStatus;
 
+/**
+ * Creates an array list of users 
+ */
 public class UserList {
 
     private static UserList list;
@@ -17,12 +20,23 @@ public class UserList {
         user = null;
     }
 
+    /**
+     * Returns the array list of users 
+     * @return returns the list of users it if is not null 
+     */
     public static UserList getUserList() {
         if (list == null)
             return new UserList();
         return list;
     }
 
+    /**
+     * Regesters a new user by a username, email, and password 
+     * @param email holds the email of the user in a string
+     * @param username holds the username of the user in a string
+     * @param password holds the password of the user in a string
+     * @return returns a different status depending on information entered 
+     */
     public RegisterStatus register(String email, String username, String password) {
         // all empty
         if ((username == null || username.equals("")) && (password == null || password.equals(""))
@@ -70,6 +84,12 @@ public class UserList {
         return RegisterStatus.SUCCESS;
     }
 
+    /**
+     * Logs in a user when they use the correct credentials 
+     * @param username holds the username of the user in a string
+     * @param password holds the password of the user in a string
+     * @return returns a different status based on information entered 
+     */
     public LoginStatus login(String username, String password) {
         if ((username == null || username.equals("")) && (password == null || password.equals("")))
             return LoginStatus.EMPTY_USERNAME_AND_PASSWORD;
@@ -86,6 +106,10 @@ public class UserList {
         return LoginStatus.INVALID_CREDENTIALS;
     }
 
+    /**
+     * Logs out a user 
+     * @return returns successesfull on logout 
+     */
     public LogoutStatus logout() {
         user = null;
         return LogoutStatus.SUCCESS;

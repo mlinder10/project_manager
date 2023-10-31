@@ -40,6 +40,10 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
+    public Project openProject(String title) {
+        return projectList.openProject(title);
+    }
+
     public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
