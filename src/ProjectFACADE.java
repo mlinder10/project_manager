@@ -70,6 +70,10 @@ public class ProjectFACADE {
         return projectList.openProject(title);
     }
 
+    public Project openProject(String title) {
+        return projectList.openProject(title);
+    }
+
 /**
  * Makes new project
  * @param title
@@ -177,12 +181,12 @@ public class ProjectFACADE {
         return project.createComment(new Comment(content, user));
     }
 
-    public CreateCommentStatus createComment(Task task, String content, User user) {
-        return task.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Task task, String content) {
+        return task.createComment(new Comment(content, userList.user));
     }
 
-    public CreateCommentStatus createComment(Comment comment, String content, User user) {
-        return comment.createComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Comment comment, String content) {
+        return comment.createComment(new Comment(content, userList.user));
     }
 
 /**
