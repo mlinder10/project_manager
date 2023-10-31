@@ -22,17 +22,31 @@ public class ProjectList {
         this.currentProject = null;
     }
 
+    /**
+     * This creates a list of projects if there is not one already
+     * @return returns a new project list
+     */
     public static ProjectList getProjectList() {
         if (projectList == null)
             return new ProjectList();
         return projectList;
     }
 
-    public static Project getCurrentProject() {
+    /**
+     * Takes you to the current project you are working on
+     * @return returns the current project
+     */
+    public Project getCurrentProject() {
         return projectList.currentProject;
     }
 
-    public static Project openProject(String title) {
+    /**
+     * Allows the user to create a project 
+     * @param user This is the current user accesing the new project
+     * @param title This is the title of the new project
+     * @return returns a new project with the user who created 
+     */
+    public Project openProject(String title) {
         for (Project project : projectList.projects) {
             if (project.title.equals(title)) {
                 projectList.currentProject = project;
@@ -42,22 +56,22 @@ public class ProjectList {
         return null;
     }
 
-    public static CreateProjectStatus createProject(User user, String title) {
+    public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
         projectList.projects.add(newProject);
         return CreateProjectStatus.SUCCESS;
     }
 
-    public static DeleteProjectStatus deleteProject(Project project) {
+    public DeleteProjectStatus deleteProject(Project project) {
         projectList.projects.remove(project);
         return DeleteProjectStatus.SUCCESS;
     }
 
-    public static CreateSectionStatus createSection(String title) {
+    public CreateSectionStatus createSection(String title) {
         return projectList.currentProject.createSection(new Section(title));
     }
 
-    public static DeleteSectionStatus removeSection(Section section) {
+    public DeleteSectionStatus removeSection(Section section) {
         return projectList.currentProject.deleteSection(section);
     }
 }
