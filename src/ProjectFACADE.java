@@ -76,6 +76,25 @@ public class ProjectFACADE {
         return section.createTask(new Task(title, description, priority, type));
     }
 
+    public boolean moveTask(String taskTitle, String sectionTitle) {
+        Section oldSection = null;
+        Task movingTask = null;
+        for (Section section : projectList.currentProject.sections) {
+            for (Task task : section.tasks) {
+                if (task.title.equals(taskTitle)) {
+                    oldSection = section;
+                    movingTask = task;
+                }
+            }
+        }
+
+        if (oldSection == null) return false;
+        oldSection.tasks.remove(movingTask);
+        getSection(sectionTitle).createTask(movingTask);
+
+        return true;
+    }
+
     public DeleteTaskStatus deleteTask(Section section, Task task) {
         return section.deleteTask(task);
     }
