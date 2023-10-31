@@ -1,15 +1,15 @@
 package src;
 
 public class UI {
-    public void Scenario1() {
+    public void ScenarioOne() {
 
     }
 
-    public void Scenario2() {
+    public void ScenarioTwo() {
 
     }
 
-    public void Scenario3() {
+    public void ScenarioThree() {
 
     }
 }

@@ -6,7 +6,7 @@ public class User {
 
     public static void main(String[] args) {
         User user1 = new User("jim", "jones", "jj@gmail.com");
-        System.out.println(user1.email); 
+        System.out.println(user1.email);
     }
 
     public UUID id;

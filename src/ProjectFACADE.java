@@ -57,7 +57,7 @@ public class ProjectFacade {
     }
 
     public CreateTaskStatus createTask(Section section, String title, String description, int priority, String type) {
-        return section.createTask(new Task(title,description,priority,type));
+        return section.createTask(new Task(title, description, priority, type));
     }
 
     public DeleteTaskStatus deleteTask(Section section, Task task) {

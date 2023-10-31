@@ -38,7 +38,7 @@ public class Comment {
         this.comments.add(comment);
         return CreateCommentStatus.SUCCESS;
     }
-    
+
     public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
         return DeleteCommentStatus.SUCCESS;
