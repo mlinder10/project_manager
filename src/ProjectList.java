@@ -29,7 +29,7 @@ public class ProjectList {
     }
 
     public static Project getCurrentProject() {
-        return null;
+        return projectList.currentProject;
     }
 
     public CreateProjectStatus createProject(User user, String title) {
