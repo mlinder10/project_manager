@@ -13,6 +13,7 @@ import src.statuses.LoginStatus;
 import src.statuses.LogoutStatus;
 import src.statuses.MoveTaskStatus;
 import src.statuses.RegisterStatus;
+import src.statuses.SaveDataStatus;
 
 public class ProjectFacade {
     private UserList userList;
@@ -100,9 +101,12 @@ public class ProjectFacade {
         return project.addUser(user);
     }
 
-    public boolean saveData() {
+    public SaveDataStatus saveData() {
         boolean userRes = DataWriter.saveUsers(userList.users);
         boolean projectRes = DataWriter.saveProjects(projectList.projects);
-        return userRes && projectRes;
+        if (userRes && projectRes)
+            return SaveDataStatus.SUCCESS;
+        else
+            return SaveDataStatus.FAILURE;
     }
 }
