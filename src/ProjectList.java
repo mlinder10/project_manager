@@ -6,7 +6,6 @@ package src;
 
 import java.util.ArrayList;
 import src.statuses.CreateProjectStatus;
-import src.statuses.CreateSectionStatus;
 import src.statuses.DeleteProjectStatus;
 import src.statuses.DeleteSectionStatus;
 
@@ -77,13 +76,10 @@ public class ProjectList {
         return DeleteProjectStatus.SUCCESS;
     }
 
-    /**
-     * Creates a section inside of the project
-     * @param title this is the title created for the section
-     * @return returns the new section in the current project with its name included
-     */
-    public CreateSectionStatus createSection(String title) {
-        return projectList.currentProject.createSection(new Section(title));
+    public Section createSection(String title) {
+        Section section = new Section(title);
+        projectList.currentProject.createSection(section);
+        return section;
     }
 
     /**

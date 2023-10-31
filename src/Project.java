@@ -22,8 +22,8 @@ public class Project {
 
     /**
      * Creates a new project and adds a user and different array list to the project 
-     * @param title
-     * @param owner
+     * @param title holds the title of the project in a string 
+     * @param owner holds the owner of the project as a user 
      */
     public Project(String title, User owner) {
         this.id = UUID.randomUUID();
@@ -55,7 +55,7 @@ public class Project {
 
     /**
      * Edits the title string that holds the projects title 
-     * @param title holdt the project title in a string 
+     * @param title holds the project title in a string 
      * @return returns true to change the project title 
      */
     public boolean editProjectTitle(String title) {
@@ -63,11 +63,13 @@ public class Project {
         return true;
     }
 
-    /**
-     * Creates a section by adding a section to the array list of sections 
-     * @param section holds sections in an array list of sections 
-     * @return returns the success status when a new section is created 
-     */
+    public Section getSection(String title) {
+        for (Section section : sections) {
+            if (section.title.equals(title)) return section;
+        }
+        return null;
+    }
+
     public CreateSectionStatus createSection(Section section) {
         this.sections.add(section);
         return CreateSectionStatus.SUCCESS;
