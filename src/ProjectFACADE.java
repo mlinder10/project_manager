@@ -1,15 +1,24 @@
 package src;
 
+import src.statuses.AddUserStatus;
+import src.statuses.CreateCommentStatus;
 import src.statuses.CreateProjectStatus;
+import src.statuses.CreateSectionStatus;
+import src.statuses.CreateTaskStatus;
+import src.statuses.DeleteCommentStatus;
 import src.statuses.DeleteProjectStatus;
+import src.statuses.DeleteSectionStatus;
+import src.statuses.DeleteTaskStatus;
 import src.statuses.LoginStatus;
+import src.statuses.LogoutStatus;
+import src.statuses.MoveTaskStatus;
 import src.statuses.RegisterStatus;
 
-public class ProjectFACADE {
+public class ProjectFacade {
     private UserList userList;
     private ProjectList projectList;
 
-    public ProjectFACADE() {
+    public ProjectFacade() {
         this.userList = UserList.getUserList();
         this.projectList = ProjectList.getProjectList();
     }
@@ -26,6 +35,10 @@ public class ProjectFACADE {
         return userList.register(password, username, email);
     }
 
+    public LogoutStatus logout() {
+        return userList.logout();
+    }
+
     public CreateProjectStatus createProject(String title) {
         return projectList.createProject(userList.user, title);
     }
@@ -34,53 +47,56 @@ public class ProjectFACADE {
         return projectList.deleteProject(project);
     }
 
-    public boolean createSection(String title) {
+    public CreateSectionStatus createSection(String title) {
         return projectList.createSection(title);
     }
 
-    public boolean removeSection(Project project, Section section) {
-        return project.removeSection(section);
+    public DeleteSectionStatus deleteSection(Project project, Section section) {
+        return project.deleteSection(section);
     }
 
-    public boolean createTask(Section section, String title, String description, int priority, String type) {
+    public CreateTaskStatus createTask(Section section, String title, String description, int priority, String type) {
         return section.createTask(new Task(title,description,priority,type));
     }
 
-    public boolean delete(Section section, Task task) {
-        return section.removeTask(task);
+    public DeleteTaskStatus deleteTask(Section section, Task task) {
+        return section.deleteTask(task);
     }
 
-    public boolean moveTask(Section currentSection, Section nextSection, Task task) {
-        if (!currentSection.removeTask(task))
-            return false;
-        return nextSection.createTask(task);
+    public MoveTaskStatus moveTask(Section currentSection, Section nextSection, Task task) {
+        if (currentSection.deleteTask(task) != DeleteTaskStatus.SUCCESS)
+            return MoveTaskStatus.DELETE_ERROR;
+        if (nextSection.createTask(task) != CreateTaskStatus.SUCCESS) {
+            return MoveTaskStatus.CREATE_ERROR;
+        }
+        return MoveTaskStatus.SUCCESS;
     }
 
-    public boolean createComment(Project project, String content, User user) {
-        return project.addComent(new Comment(content, user));
+    public CreateCommentStatus createComment(Project project, String content, User user) {
+        return project.createComment(new Comment(content, user));
     }
 
-    public boolean createComment(Task task, String content, User user) {
-        return task.addComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Task task, String content, User user) {
+        return task.createComment(new Comment(content, user));
     }
 
-    public boolean createComment(Comment comment, String content, User user) {
-        return comment.addComment(new Comment(content, user));
+    public CreateCommentStatus createComment(Comment comment, String content, User user) {
+        return comment.createComment(new Comment(content, user));
     }
 
-    public boolean deleteComment(Project project, Comment comment) {
+    public DeleteCommentStatus deleteComment(Project project, Comment comment) {
         return project.deleteComment(comment);
     }
 
-    public boolean deleteComment(Task task, Comment comment) {
+    public DeleteCommentStatus deleteComment(Task task, Comment comment) {
         return task.deleteComment(comment);
     }
 
-    public boolean deleteComment(Comment rootComment, Comment comment) {
+    public DeleteCommentStatus deleteComment(Comment rootComment, Comment comment) {
         return rootComment.deleteComment(comment);
     }
 
-    public boolean addUserToProject(User user, Project project) {
+    public AddUserStatus addUserToProject(User user, Project project) {
         return project.addUser(user);
     }
 

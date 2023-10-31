@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+import src.statuses.CreateCommentStatus;
+import src.statuses.DeleteCommentStatus;
+
 public class Comment {
 
     public UUID id;
@@ -31,15 +34,13 @@ public class Comment {
         this.comments = comments;
     }
 
-    public boolean addComment(Comment comment) {
-        if(this.comments.add(comment)) 
-            return true;
-        else 
-            return false;
+    public CreateCommentStatus createComment(Comment comment) {
+        this.comments.add(comment);
+        return CreateCommentStatus.SUCCESS;
     }
     
-    public boolean deleteComment(Comment comment) {
+    public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
-        return true;
+        return DeleteCommentStatus.SUCCESS;
     }
 }

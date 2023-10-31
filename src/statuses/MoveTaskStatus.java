@@ -1,5 +1,7 @@
 package src.statuses;
 
 public enum MoveTaskStatus {
-    SUCCESS
+    SUCCESS,
+    DELETE_ERROR,
+    CREATE_ERROR
 }

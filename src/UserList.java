@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 import src.statuses.LoginStatus;
+import src.statuses.LogoutStatus;
 import src.statuses.RegisterStatus;
 
 public class UserList {
@@ -85,8 +86,8 @@ public class UserList {
         return LoginStatus.INVALID_CREDENTIALS;
     }
 
-    public boolean logout() {
+    public LogoutStatus logout() {
         user = null;
-        return true;
+        return LogoutStatus.SUCCESS;
     }
 }

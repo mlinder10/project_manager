@@ -3,6 +3,12 @@ package src;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import src.statuses.AddUserStatus;
+import src.statuses.CreateCommentStatus;
+import src.statuses.CreateSectionStatus;
+import src.statuses.DeleteCommentStatus;
+import src.statuses.DeleteSectionStatus;
+
 public class Project {
     public UUID id;
     public User owner;
@@ -35,28 +41,28 @@ public class Project {
         return true;
     }
 
-    public boolean createSection(Section section) {
+    public CreateSectionStatus createSection(Section section) {
         this.sections.add(section);
-        return true;
+        return CreateSectionStatus.SUCCESS;
     }
 
-    public boolean removeSection(Section section) {
+    public DeleteSectionStatus deleteSection(Section section) {
         this.sections.remove(section);
-        return true;
+        return DeleteSectionStatus.SUCCESS;
     }
 
-    public boolean addUser(User user) {
+    public AddUserStatus addUser(User user) {
         this.users.add(user);
-        return true;
+        return AddUserStatus.SUCCESS;
     }
 
-    public boolean addComent(Comment comment) {
+    public CreateCommentStatus createComment(Comment comment) {
         this.comments.add(comment);
-        return true;
+        return CreateCommentStatus.SUCCESS;
     }
 
-    public boolean deleteComment(Comment comment) {
+    public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
-        return true;
+        return DeleteCommentStatus.SUCCESS;
     }
 }

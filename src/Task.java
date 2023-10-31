@@ -6,6 +6,9 @@ package src;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import src.statuses.CreateCommentStatus;
+import src.statuses.DeleteCommentStatus;
+
 public class Task {
 
     public UUID id;
@@ -43,15 +46,13 @@ public class Task {
         this.changeLog = changeLog;
     }
 
-    public boolean addComment(Comment comment) {
-        if(this.comments.add(comment))
-            return true;
-        else 
-            return false;
+    public CreateCommentStatus createComment(Comment comment) {
+        this.comments.add(comment);
+        return CreateCommentStatus.SUCCESS;
     }
 
-    public boolean deleteComment(Comment comment) {
+    public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
-        return true;
+        return DeleteCommentStatus.SUCCESS;
     }
 }

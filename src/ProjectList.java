@@ -6,7 +6,9 @@ package src;
 
 import java.util.ArrayList;
 import src.statuses.CreateProjectStatus;
+import src.statuses.CreateSectionStatus;
 import src.statuses.DeleteProjectStatus;
+import src.statuses.DeleteSectionStatus;
 
 public class ProjectList {
 
@@ -37,20 +39,15 @@ public class ProjectList {
     }
 
     public DeleteProjectStatus deleteProject(Project project) {
-        if(project = null){
-            
-        }
-        if (projects.remove(project))
-            return true;
-        else 
-            return false;
+        projects.remove(project);
+        return DeleteProjectStatus.SUCCESS;
     }
 
-    public boolean createSection(String title) {
+    public CreateSectionStatus createSection(String title) {
         return currentProject.createSection(new Section(title));
     }
 
-    public boolean removeSection(Section section) {
-        return currentProject.removeSection(section);
+    public DeleteSectionStatus removeSection(Section section) {
+        return currentProject.deleteSection(section);
     }
 }

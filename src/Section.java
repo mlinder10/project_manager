@@ -2,6 +2,9 @@ package src;
 
 import java.util.ArrayList;
 
+import src.statuses.CreateTaskStatus;
+import src.statuses.DeleteTaskStatus;
+
 public class Section {
 
     public String title;
@@ -17,13 +20,13 @@ public class Section {
         this.tasks = tasks;
     }
 
-    public boolean createTask(Task task) {
+    public CreateTaskStatus createTask(Task task) {
         this.tasks.add(task);
-        return true;
+        return CreateTaskStatus.SUCCESS;
     }
 
-    public boolean removeTask(Task task) {
+    public DeleteTaskStatus deleteTask(Task task) {
         this.tasks.remove(task);
-        return true;
+        return DeleteTaskStatus.SUCCESS;
     }
 }
