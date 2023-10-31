@@ -3,7 +3,6 @@ package src;
 import src.statuses.AddUserStatus;
 import src.statuses.CreateCommentStatus;
 import src.statuses.CreateProjectStatus;
-import src.statuses.CreateSectionStatus;
 import src.statuses.CreateTaskStatus;
 import src.statuses.DeleteCommentStatus;
 import src.statuses.DeleteProjectStatus;
@@ -54,6 +53,13 @@ public class ProjectFACADE {
 
     public Section createSection(String title) {
         return projectList.createSection(title);
+    }
+
+    public Section getSection(String title) {
+        for (Section section : projectList.currentProject.sections) {
+            if (section.title.equals(title)) return section;
+        }
+        return null;
     }
 
     public DeleteSectionStatus deleteSection(Project project, Section section) {
