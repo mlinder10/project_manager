@@ -46,22 +46,32 @@ public class ProjectList {
      * @param title This is the title of the new project
      * @return returns a new project with the user who created 
      */
+    public Project openProject(String title) {
+        for (Project project : projectList.projects) {
+            if (project.title.equals(title)) {
+                projectList.currentProject = project;
+                return project;
+            }
+        }
+        return null;
+    }
+
     public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
-        projects.add(newProject);
+        projectList.projects.add(newProject);
         return CreateProjectStatus.SUCCESS;
     }
 
     public DeleteProjectStatus deleteProject(Project project) {
-        projects.remove(project);
+        projectList.projects.remove(project);
         return DeleteProjectStatus.SUCCESS;
     }
 
     public CreateSectionStatus createSection(String title) {
-        return currentProject.createSection(new Section(title));
+        return projectList.currentProject.createSection(new Section(title));
     }
 
     public DeleteSectionStatus removeSection(Section section) {
-        return currentProject.deleteSection(section);
+        return projectList.currentProject.deleteSection(section);
     }
 }
