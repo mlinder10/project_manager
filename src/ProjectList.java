@@ -28,11 +28,11 @@ public class ProjectList {
         return projectList;
     }
 
-    public static Project getCurrentProject() {
+    public Project getCurrentProject() {
         return projectList.currentProject;
     }
 
-    public static Project openProject(String title) {
+    public Project openProject(String title) {
         for (Project project : projectList.projects) {
             if (project.title.equals(title)) {
                 projectList.currentProject = project;
@@ -42,22 +42,22 @@ public class ProjectList {
         return null;
     }
 
-    public static CreateProjectStatus createProject(User user, String title) {
+    public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
         projectList.projects.add(newProject);
         return CreateProjectStatus.SUCCESS;
     }
 
-    public static DeleteProjectStatus deleteProject(Project project) {
+    public DeleteProjectStatus deleteProject(Project project) {
         projectList.projects.remove(project);
         return DeleteProjectStatus.SUCCESS;
     }
 
-    public static CreateSectionStatus createSection(String title) {
+    public CreateSectionStatus createSection(String title) {
         return projectList.currentProject.createSection(new Section(title));
     }
 
-    public static DeleteSectionStatus removeSection(Section section) {
+    public DeleteSectionStatus removeSection(Section section) {
         return projectList.currentProject.deleteSection(section);
     }
 }

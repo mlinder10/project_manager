@@ -40,7 +40,7 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
-    public Project getProject(String title) {
+    public Project openProject(String title) {
         return projectList.openProject(title);
     }
 
