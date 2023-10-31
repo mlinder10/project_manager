@@ -28,8 +28,10 @@ public class Task {
         this.description = description;
         this.priority = priority;
         this.type = type;
+        this.completion = false;
         this.comments = new ArrayList<Comment>();
         this.changeLog = new ArrayList<Change>();
+        this.assignedUsers = new ArrayList<User>();
     }
 
     public Task(UUID id, String title, String description, String type, ArrayList<User> assignedUsers,
@@ -54,5 +56,15 @@ public class Task {
     public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);
         return DeleteCommentStatus.SUCCESS;
+    }
+
+    public boolean addAssignedUser(User user) {
+        assignedUsers.add(user);
+        return true;
+    }
+
+    public boolean removeAssignedUser(User user) {
+        assignedUsers.remove(user);
+        return true;
     }
 }

@@ -101,6 +101,14 @@ public class ProjectFacade {
         return project.addUser(user);
     }
 
+    public boolean addAssignedUser(Task task, User user) {
+        return task.addAssignedUser(user);
+    }
+
+    public boolean removeAssignedUser(Task task, User user) {
+        return task.removeAssignedUser(user);
+    }
+
     public SaveDataStatus saveData() {
         boolean userRes = DataWriter.saveUsers(userList.users);
         boolean projectRes = DataWriter.saveProjects(projectList.projects);

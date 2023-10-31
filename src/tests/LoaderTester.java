@@ -1,6 +1,7 @@
 package src.tests;
 
 import src.ProjectFacade;
+import src.statuses.SaveDataStatus;
 
 public class LoaderTester {
     public static void main(String[] args) {
@@ -11,6 +12,6 @@ public class LoaderTester {
 
         // System.out.println(create);
         facade.register("null", "null", "null");
-        boolean save = facade.saveData();
+        SaveDataStatus save = facade.saveData();
     }
 }
