@@ -4,9 +4,20 @@ import java.io.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.ArrayList;
-
+/**
+ * @author Alexis Hill and Matt Linder
+ */
 public class DataWriter extends DataConstants {
 
+    /**
+     * 
+     * @param users the method saveUsers takes in an arraylist of users 
+     * and converts each user in the arraylist into a json object and 
+     * then stores the object into the json array
+     * @return true if the file that the json array will be written into
+     * is available and false if there is no file to write into or nothing 
+     * being written into the file
+     */
     public static boolean saveUsers(ArrayList<User> users) {
         JSONArray jsonUsers = new JSONArray();
         for (User user : UserList.getUserList().users) {
@@ -22,6 +33,15 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * 
+     * @param projects the method saveProjects takes in an arraylist of
+     *  projects and converts each project in the arraylist into a json
+     *  object and then stores the object into the json array
+     * @return true if the file that the json array will be written into
+     * is available and false if there is no file to write into or nothing 
+     * being written into the file
+     */
     public static boolean saveProjects(ArrayList<Project> projects) {
         JSONArray jsonProject = new JSONArray();
         for (Project project : ProjectList.getProjectList().projects) {
@@ -37,6 +57,13 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * 
+     * @param user the method getUserJson takes in a user object and takes in
+     * the arguments from the user and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the user data is obtained
+     */
     public static JSONObject getUserJson(User user) {
         JSONObject userJson = new JSONObject();
         userJson.put(USER_ID, user.id.toString());
@@ -46,6 +73,13 @@ public class DataWriter extends DataConstants {
         return userJson;
     }
 
+    /**
+     * 
+     * @param project the method getProjectJson takes in a project object and extracts
+     * the arguments from the project and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the project data is obtained
+     */
     public static JSONObject getProjectJson(Project project) {
         JSONObject projectJson = new JSONObject();
         projectJson.put(PROJECT_ID, project.id.toString());
@@ -73,7 +107,14 @@ public class DataWriter extends DataConstants {
         return projectJson;
     }
 
-    public static JSONObject getSectionJson(Section section) {
+    /**
+     * 
+     * @param section the method getSectionJson takes in a section object and extracts
+     * the arguments from the section and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the section data is obtained
+     */
+     public static JSONObject getSectionJson(Section section) {
         JSONObject sectionJson = new JSONObject();
         sectionJson.put(PROJECT_SECTION_TITLE, section.title);
 
@@ -85,6 +126,13 @@ public class DataWriter extends DataConstants {
         return sectionJson;
     }
 
+    /**
+     * 
+     * @param task the method getTaskJson takes in a task object and extracts
+     * the arguments from the task and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the task data is obtained
+     */
     public static JSONObject getTaskJson(Task task) {
         JSONObject taskJson = new JSONObject();
         taskJson.put(PROJECT_TASK_ID, task.id.toString());
@@ -114,6 +162,13 @@ public class DataWriter extends DataConstants {
         return taskJson;
     }
 
+    /**
+     * 
+     * @param comment the method getCommentJson takes in a section object and extracts
+     * the arguments from the comment and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the comment data is obtained
+     */
     public static JSONObject getCommentJson(Comment comment) {
         JSONObject commentJson = new JSONObject();
         commentJson.put(PROJECT_COMMENTS_ID, comment.id.toString());
@@ -129,6 +184,13 @@ public class DataWriter extends DataConstants {
         return commentJson;
     }
 
+    /**
+     * 
+     * @param change the method getChangeJson takes in a section object and extracts
+     * the arguments from the change and makes them into json attributes in an 
+     * effort to convert the object into a json object
+     * @return the json object is returned after the change data is obtained
+     */
     public static JSONObject getChangeJson(Change change) {
         JSONObject changeJson = new JSONObject();
         changeJson.put(PROJECT_CHANGE_ID, change.id.toString());
