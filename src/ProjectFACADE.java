@@ -3,7 +3,6 @@ package src;
 import src.statuses.AddUserStatus;
 import src.statuses.CreateCommentStatus;
 import src.statuses.CreateProjectStatus;
-import src.statuses.CreateSectionStatus;
 import src.statuses.CreateTaskStatus;
 import src.statuses.DeleteCommentStatus;
 import src.statuses.DeleteProjectStatus;
@@ -67,11 +66,6 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
-/**
- * gets a project
- * @param title
- * @return Project
- */
     public Project getProject(String title) {
         return projectList.openProject(title);
     }
@@ -94,13 +88,15 @@ public class ProjectFACADE {
         return projectList.deleteProject(project);
     }
 
-/**
- * Creates a section
- * @param title
- * @return If section is created
- */
     public CreateSectionStatus createSection(String title) {
         return projectList.createSection(title);
+    }
+
+    public Section getSection(String title) {
+        for (Section section : projectList.currentProject.sections) {
+            if (section.title.equals(title)) return section;
+        }
+        return null;
     }
 
 /**
@@ -111,6 +107,12 @@ public class ProjectFACADE {
  */
     public DeleteSectionStatus deleteSection(Project project, Section section) {
         return project.deleteSection(section);
+    }
+
+    public Task createTask(String sectionTitle, String title, String description, int priority, String type) {
+        Task task = new Task(title, description, priority, type);
+        projectList.currentProject.getSection(sectionTitle).createTask(task);
+        return task;
     }
 
 /**
@@ -152,35 +154,14 @@ public class ProjectFACADE {
         return MoveTaskStatus.SUCCESS;
     }
 
-/**
- * Makes comment on project
- * @param project
- * @param content
- * @param user
- * @return if commment is moved
- */
     public CreateCommentStatus createComment(Project project, String content, User user) {
         return project.createComment(new Comment(content, user));
     }
 
-/**
- * Makes comment on task
- * @param task
- * @param content
- * @param user
- * @return if comment is created 
- */
     public CreateCommentStatus createComment(Task task, String content, User user) {
         return task.createComment(new Comment(content, user));
     }
 
-/**
- * makes comment on comment
- * @param comment
- * @param content
- * @param user
- * @return if comment is created
- */
     public CreateCommentStatus createComment(Comment comment, String content, User user) {
         return comment.createComment(new Comment(content, user));
     }
