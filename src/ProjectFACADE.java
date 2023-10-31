@@ -66,6 +66,11 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
+/**
+ * gets project
+ * @param title
+ * @return project
+ */
     public Project getProject(String title) {
         return projectList.openProject(title);
     }
