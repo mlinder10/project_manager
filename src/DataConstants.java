@@ -1,5 +1,7 @@
 package src;
-
+/**
+ * @author Matt Linder
+ */
 public class DataConstants {
     // users
     public static final String USER_ID = "id";
