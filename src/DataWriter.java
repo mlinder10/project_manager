@@ -44,10 +44,10 @@ public class DataWriter extends DataConstants {
      */
     public static boolean saveProjects(ArrayList<Project> projects) {
         JSONArray jsonProject = new JSONArray();
-        for (Project project : ProjectList.getProjectList().projects) {
+        for (Project project : projects) {
             jsonProject.add(getProjectJson(project));
         }
-        try (FileWriter file = new FileWriter("json/projectsTest.json")) {
+        try (FileWriter file = new FileWriter("json/output.json")) {
             file.write(jsonProject.toJSONString());
             file.flush();
             return true;

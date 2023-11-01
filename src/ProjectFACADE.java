@@ -117,7 +117,9 @@ public class ProjectFACADE {
      * @return Section
      */
     public Section createSection(String title) {
-        return projectList.createSection(title);
+        Section section = new Section(title);
+        projectList.currentProject.sections.add(section);
+        return section;
     }
 
     /**
@@ -384,7 +386,7 @@ public class ProjectFACADE {
     public Comment getComment(Task targetTask, String content) {
         for (Section section : projectList.currentProject.sections) {
             for (Task task : section.tasks) {
-                if (task.id.equals(targetTask.id)) {
+                if (task.title.equals(targetTask.title)) {
                     for (Comment comment : task.comments) {
                         if (comment.content.equals(content))
                             return comment;

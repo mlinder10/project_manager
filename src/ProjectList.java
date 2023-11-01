@@ -17,7 +17,6 @@ public class ProjectList {
 
     private ProjectList() {
         this.projects = DataLoader.loadProjects();
-        System.out.println(this.projects.size());
         this.currentProject = null;
     }
 
@@ -36,7 +35,7 @@ public class ProjectList {
      * @return returns the current project
      */
     public Project getCurrentProject() {
-        return projectList.currentProject;
+        return currentProject;
     }
 
     /**
@@ -45,9 +44,9 @@ public class ProjectList {
      * @return returns nothing 
      */
     public Project openProject(String title) {
-        for (Project project : projectList.projects) {
+        for (Project project : projects) {
             if (project.title.equals(title)) {
-                projectList.currentProject = project;
+                currentProject = project;
                 return project;
             }
         }
@@ -62,7 +61,7 @@ public class ProjectList {
      */
     public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
-        projectList.projects.add(newProject);
+        projects.add(newProject);
         return CreateProjectStatus.SUCCESS;
     }
 
@@ -72,13 +71,13 @@ public class ProjectList {
      * @return returns the success of deleting the project
      */
     public DeleteProjectStatus deleteProject(Project project) {
-        projectList.projects.remove(project);
+        projects.remove(project);
         return DeleteProjectStatus.SUCCESS;
     }
 
     public Section createSection(String title) {
         Section section = new Section(title);
-        projectList.currentProject.createSection(section);
+        currentProject.createSection(section);
         return section;
     }
 
@@ -88,6 +87,6 @@ public class ProjectList {
      * @return returns a deleted section
      */
     public DeleteSectionStatus removeSection(Section section) {
-        return projectList.currentProject.deleteSection(section);
+        return currentProject.deleteSection(section);
     }
 }

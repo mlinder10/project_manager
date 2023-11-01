@@ -50,7 +50,7 @@ public class DataLoader extends DataConstants {
     public static ArrayList<Project> loadProjects() {
         try {
             ArrayList<Project> projects = new ArrayList<Project>();
-            FileReader reader = new FileReader("json/projects.json");
+            FileReader reader = new FileReader("json/projectsTest.json");
             JSONArray projectsJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int projectIndex = 0; projectIndex < projectsJson.size(); projectIndex++) {

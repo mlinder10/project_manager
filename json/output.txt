@@ -23,32 +23,7 @@
         "tasks": [
           {
             "completion": false,
-            "comments": [
-              {
-                "date": "Thu Oct 12 13:48:55 EDT 2023",
-                "comments": [],
-                "id": "cd70e5c0-6c15-4eba-88ab-7885fbd78126",
-                "user": {
-                  "password": "password",
-                  "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
-                  "email": "jeffg@outlook.com",
-                  "username": "jeffgoldblum"
-                },
-                "content": "Not cylindrical enough"
-              },
-              {
-                "date": "Thu Oct 12 13:48:55 EDT 2023",
-                "comments": [],
-                "id": "cd70e5c0-6c15-4eba-88ab-7885fbd78126",
-                "user": {
-                  "password": "password",
-                  "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
-                  "email": "afinch@gmail.com",
-                  "username": "atticusfinch"
-                },
-                "content": "What's a cylinder"
-              }
-            ],
+            "comments": [],
             "description": "",
             "changeLog": [],
             "id": "5aabb309-4a9d-42c7-b320-e068c0b6447c",
@@ -66,14 +41,8 @@
           }
         ]
       },
-      {
-        "title": "TODO",
-        "tasks": []
-      },
-      {
-        "title": "DONE",
-        "tasks": []
-      }
+      { "title": "TODO", "tasks": [] },
+      { "title": "DONE", "tasks": [] }
     ]
   },
   {
@@ -88,18 +57,9 @@
     "title": "Soap Free Washers",
     "users": [],
     "sections": [
-      {
-        "title": "DOING",
-        "tasks": []
-      },
-      {
-        "title": "TODO",
-        "tasks": []
-      },
-      {
-        "title": "DONE",
-        "tasks": []
-      }
+      { "title": "DOING", "tasks": [] },
+      { "title": "TODO", "tasks": [] },
+      { "title": "DONE", "tasks": [] }
     ]
   },
   {
@@ -114,18 +74,9 @@
     "title": "Air Computers",
     "users": [],
     "sections": [
-      {
-        "title": "DOING",
-        "tasks": []
-      },
-      {
-        "title": "TODO",
-        "tasks": []
-      },
-      {
-        "title": "DONE",
-        "tasks": []
-      }
+      { "title": "DOING", "tasks": [] },
+      { "title": "TODO", "tasks": [] },
+      { "title": "DONE", "tasks": [] }
     ]
   }
 ]
