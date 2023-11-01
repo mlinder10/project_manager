@@ -9,6 +9,28 @@ import java.util.ArrayList;
  */
 public class DataWriter extends DataConstants {
 
+    public static void TextFileWriter(Project project) throws IOException {
+        String output = "";
+        output += project.title + "\n\n";
+        for (Section section : project.sections) {
+            output += section.title + "\n\n";
+            for (Task task : section.tasks) {
+                output += "\t" + task.title + "\n";
+                for (Comment comment : task.comments) {
+                    output += "\t\t" + comment.content + "\n";
+                    for (Comment innerComment : comment.comments) {
+                        output += "\t\t\t" + innerComment.content + "\n";
+                    }
+                }
+            }
+            output += "\n\n";
+        }
+
+        FileWriter fileWriter = new FileWriter(new File("./json/output.txt"));
+        fileWriter.write(output);
+        fileWriter.close();
+    }
+
     /**
      * 
      * @param users the method saveUsers takes in an arraylist of users 

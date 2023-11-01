@@ -1,5 +1,7 @@
 package src;
 
+import java.io.IOException;
+
 public class UI {
     public static void main(String[] args) {
         ProjectFACADE facade = new ProjectFACADE();
@@ -22,5 +24,10 @@ public class UI {
         facade.moveTask(taskThree, "Abandoned");
 
         facade.saveData();
+        try {
+            DataWriter.TextFileWriter(facade.getProject("Electric Missiles"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
