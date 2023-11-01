@@ -63,6 +63,24 @@
                 "username": "atticusmadden"
               }
             ]
+          },
+          {
+            "completion": false,
+            "comments": [],
+            "description": "",
+            "changeLog": [],
+            "id": "5aabb309-4a9d-42c7-b320-e068c0b6447c",
+            "title": "Make impossible burger possible",
+            "type": "",
+            "priority": 1,
+            "assignedUsers": [
+              {
+                "password": "password",
+                "id": "f1e3e520-b319-4b91-aa06-9434f41b3ef6",
+                "email": "amadden@gmail.com",
+                "username": "atticusmadden"
+              }
+            ]
           }
         ]
       },

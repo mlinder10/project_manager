@@ -81,6 +81,7 @@ public class UserList {
 
         User newUser = new User(username, password, email);
         users.add(newUser);
+        user = newUser;
         return RegisterStatus.SUCCESS;
     }
 
@@ -91,12 +92,6 @@ public class UserList {
      * @return returns a different status based on information entered 
      */
     public LoginStatus login(String username, String password) {
-        if ((username == null || username.equals("")) && (password == null || password.equals("")))
-            return LoginStatus.EMPTY_USERNAME_AND_PASSWORD;
-        if (username == null || username.equals(""))
-            return LoginStatus.EMPTY_USERNAME;
-        if (password == null || password.equals(""))
-            return LoginStatus.EMPTY_PASSWORD;
         for (User userElement : users) {
             if (userElement.login(username, password)) {
                 user = userElement;

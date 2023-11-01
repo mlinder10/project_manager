@@ -51,7 +51,7 @@ public class User {
      * @return returns the users username and password for login
      */
     public boolean login(String username, String password) {
-        return this.username == username && this.password == password;
+        return this.username.equals(username) && this.password.equals(password);
     }
 
     /**

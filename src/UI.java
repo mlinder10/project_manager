@@ -19,7 +19,7 @@ public class UI {
 
         facade.createSection("Abandoned");
         Task taskThree = facade.getTask("Make impossible burger possible");
-        // facade.moveTask(taskThree, "Abandoned");
+        facade.moveTask(taskThree, "Abandoned");
 
         facade.saveData();
     }

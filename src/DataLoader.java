@@ -26,7 +26,7 @@ public class DataLoader extends DataConstants {
     public static ArrayList<User> loadUsers() {
         try {
             ArrayList<User> users = new ArrayList<User>();
-            FileReader reader = new FileReader("json/users.json");
+            FileReader reader = new FileReader("json/usersTest.json");
             JSONArray usersJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJson.size(); i++) {
@@ -90,7 +90,7 @@ public class DataLoader extends DataConstants {
                         }
 
                         // comment parsing
-                        JSONArray taskCommentsjson = (JSONArray) projectJson.get(PROJECT_TASK_COMMENTS);
+                        JSONArray taskCommentsjson = (JSONArray) taskJson.get(PROJECT_TASK_COMMENTS);
                         ArrayList<Comment> taskComments = new ArrayList<Comment>();
                         for (int commentIndex = 0; commentIndex < taskCommentsjson.size(); commentIndex++) {
                             JSONObject commentJsonRecursive = (JSONObject) taskCommentsjson.get(commentIndex);

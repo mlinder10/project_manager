@@ -254,6 +254,7 @@ public class ProjectFACADE {
      * @return CreateCommentStatus
      */
     public CreateCommentStatus createComment(Task task, String content) {
+        System.out.println(userList.user);
         return task.createComment(new Comment(content, userList.user));
     }
 
@@ -360,16 +361,18 @@ public class ProjectFACADE {
     }
 
     public boolean moveTask(Task targetTask, String sectionTitle) {
+        Section targetSection = null;
         for (Section section : projectList.currentProject.sections) {
             if (section.title.equals(sectionTitle)) {
                 createTask(section, targetTask.title, targetTask.description, targetTask.priority, targetTask.type);
             }
             for (Task task : section.tasks) {
                 if (task.id.equals(targetTask.id)) {
-                    deleteTask(section, task);
+                    targetSection = section;
                 }
             }
         }
+        targetSection.tasks.remove(targetTask);
         return true;
     }
 
