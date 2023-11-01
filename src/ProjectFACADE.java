@@ -66,17 +66,6 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
-    public User getSelfUser() {
-        return userList.user;
-    }
-
-    public User getUser(String username) {
-        for (User user : userList.users) {
-            if (user.username.equals(username)) return user;
-        }
-        return null;
-    }
-
 /**
  * gets project
  * @param title
@@ -113,10 +102,20 @@ public class ProjectFACADE {
         return projectList.deleteProject(project);
     }
 
+/**
+ * Creates section
+ * @param title
+ * @return Section
+ */
     public Section createSection(String title) {
         return projectList.createSection(title);
     }
 
+/**
+ * Gets section based on title
+ * @param title
+ * @return Section
+ */
     public Section getSection(String title) {
         for (Section section : projectList.currentProject.sections) {
             if (section.title.equals(title)) return section;
@@ -134,6 +133,15 @@ public class ProjectFACADE {
         return project.deleteSection(section);
     }
 
+/**
+ * creates a task
+ * @param sectionTitle
+ * @param title
+ * @param description
+ * @param priority
+ * @param type
+ * @return Task
+ */
     public Task createTask(String sectionTitle, String title, String description, int priority, String type) {
         Task task = new Task(title, description, priority, type);
         projectList.currentProject.getSection(sectionTitle).createTask(task);
@@ -153,23 +161,20 @@ public class ProjectFACADE {
         return section.createTask(new Task(title, description, priority, type));
     }
 
-    public Task getTask(String title) {
-        for (Section section : projectList.currentProject.sections) {
-            for (Task task : section.tasks) {
-                if (task.title.equals(title)) {
-                    return task;
-                }
-            }
-        }
-        return null;
-    }
-
-    public boolean moveTask(Task movingTask, String sectionTitle) {
+/**
+ * moves task
+ * @param taskTitle
+ * @param sectionTitle
+ * @return
+ */
+    public boolean moveTask(String taskTitle, String sectionTitle) {
         Section oldSection = null;
+        Task movingTask = null;
         for (Section section : projectList.currentProject.sections) {
             for (Task task : section.tasks) {
-                if (task.title.equals(movingTask.title)) {
+                if (task.title.equals(taskTitle)) {
                     oldSection = section;
+                    movingTask = task;
                 }
             }
         }
@@ -206,22 +211,32 @@ public class ProjectFACADE {
         }
         return MoveTaskStatus.SUCCESS;
     }
-
-    public Comment getComment(Task task, String content) {
-        for (Comment comment : task.comments) {
-            if (comment.content.equals(content)) return comment;
-        }
-        return null;
-    }
-
+/**
+ * creates a comment on project
+ * @param project
+ * @param content
+ * @param user
+ * @return CreateCommentStatus
+ */
     public CreateCommentStatus createComment(Project project, String content, User user) {
         return project.createComment(new Comment(content, user));
     }
-
+/**
+ * creates comment on task
+ * @param task
+ * @param content
+ * @return CreateCommentStatus
+ */
     public CreateCommentStatus createComment(Task task, String content) {
         return task.createComment(new Comment(content, userList.user));
     }
 
+/**
+ * create comment on comment
+ * @param comment
+ * @param content
+ * @return CreateCommentStatus
+ */
     public CreateCommentStatus createComment(Comment comment, String content) {
         return comment.createComment(new Comment(content, userList.user));
     }
