@@ -1,5 +1,7 @@
 package src;
-
+/**
+ * @author Alex Brown
+ */
 import src.statuses.AddUserStatus;
 import src.statuses.CreateCommentStatus;
 import src.statuses.CreateProjectStatus;
