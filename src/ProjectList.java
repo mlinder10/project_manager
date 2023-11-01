@@ -76,6 +76,11 @@ public class ProjectList {
         return DeleteProjectStatus.SUCCESS;
     }
 
+    /**
+     * Creates a new section 
+     * @param title Holds the title of the new section in a string 
+     * @return returns the new section
+     */
     public Section createSection(String title) {
         Section section = new Section(title);
         projectList.currentProject.createSection(section);
