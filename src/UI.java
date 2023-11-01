@@ -11,7 +11,7 @@ public class UI {
 
         Task taskTwo = facade.getTask("Curve the metal to make a cylindrical shape");
         facade.moveTask(taskTwo, "Doing");
-        taskTwo.removeAssignedUser(facade.getSelfUser());
+        taskTwo.removeAssignedUser(facade.getUser());
         taskTwo.addAssignedUser(facade.getUser("jeffgoldblum"));
         Comment comment = facade.getComment(taskTwo, "Not cylindrical enough");
         facade.createComment(comment, "How about you do it Jeff");
