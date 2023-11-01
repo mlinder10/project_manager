@@ -10,10 +10,19 @@ import java.util.Date;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
-
+/**
+ * @author Matt Linder and Alexis Hill
+ */
 public class DataLoader extends DataConstants {
     static SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
 
+    /**
+     * 
+     * @return the method loadUsers returns an arraylist of users that is read in from the
+     * jsonfile by taking in the data on file and parsing it into a json array. The json array 
+     * is then iterated through with a for loop to put each individual user into
+     * an arraylist. If there is nothing on file, then null is returned
+     */
     public static ArrayList<User> loadUsers() {
         try {
             ArrayList<User> users = new ArrayList<User>();
@@ -31,6 +40,13 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * 
+     * @return the method loadProjects returns an arraylist of projects that is read in from the
+     * jsonfile by taking in the data on file and parsing it into a json array. The json array 
+     * is then iterated through with a for loop to put each individual project into
+     * an arraylist. If there is nothing on file, then null is returned
+     */
     public static ArrayList<Project> loadProjects() {
         try {
             ArrayList<Project> projects = new ArrayList<Project>();
@@ -127,6 +143,12 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * 
+     * @param userJson the method parseUser takes in a json object and 
+     * converts the attributes in the json file into object constructors
+     * @return a new user will be made with the formed constructors
+     */
     private static User parseUser(JSONObject userJson) {
         UUID id = UUID.fromString((String) userJson.get(USER_ID));
         String username = (String) userJson.get(USER_USERNAME);
@@ -135,6 +157,13 @@ public class DataLoader extends DataConstants {
         return new User(id, username, password, email);
     }
 
+    /**
+     * 
+     * @param commentJson the method parseComment takes in a json object and 
+     * converts the attributes in the json file into object constructors
+     * @return a new comment will be made with the formed constructors
+     * @throws ParseException show error message
+     */
     private static Comment parseComment(JSONObject commentJson) throws ParseException {
         UUID id = UUID.fromString((String) commentJson.get(PROJECT_COMMENTS_ID));
         String content = (String) commentJson.get(PROJECT_COMMENTS_CONTENT);

@@ -66,6 +66,17 @@ public class ProjectFACADE {
         return userList.logout();
     }
 
+    public User getSelfUser() {
+        return userList.user;
+    }
+
+    public User getUser(String username) {
+        for (User user : userList.users) {
+            if (user.username.equals(username)) return user;
+        }
+        return null;
+    }
+
 /**
  * gets project
  * @param title
@@ -142,14 +153,23 @@ public class ProjectFACADE {
         return section.createTask(new Task(title, description, priority, type));
     }
 
-    public boolean moveTask(String taskTitle, String sectionTitle) {
-        Section oldSection = null;
-        Task movingTask = null;
+    public Task getTask(String title) {
         for (Section section : projectList.currentProject.sections) {
             for (Task task : section.tasks) {
-                if (task.title.equals(taskTitle)) {
+                if (task.title.equals(title)) {
+                    return task;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean moveTask(Task movingTask, String sectionTitle) {
+        Section oldSection = null;
+        for (Section section : projectList.currentProject.sections) {
+            for (Task task : section.tasks) {
+                if (task.title.equals(movingTask.title)) {
                     oldSection = section;
-                    movingTask = task;
                 }
             }
         }
@@ -185,6 +205,13 @@ public class ProjectFACADE {
             return MoveTaskStatus.CREATE_ERROR;
         }
         return MoveTaskStatus.SUCCESS;
+    }
+
+    public Comment getComment(Task task, String content) {
+        for (Comment comment : task.comments) {
+            if (comment.content.equals(content)) return comment;
+        }
+        return null;
     }
 
     public CreateCommentStatus createComment(Project project, String content, User user) {
