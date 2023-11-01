@@ -75,6 +75,11 @@ public class ProjectFACADE {
         return projectList.openProject(title);
     }
 
+/**
+ * opens project
+ * @param title
+ * @return project
+ */
     public Project openProject(String title) {
         return projectList.openProject(title);
     }
