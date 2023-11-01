@@ -20,7 +20,7 @@ public class DataWriter extends DataConstants {
      */
     public static boolean saveUsers(ArrayList<User> users) {
         JSONArray jsonUsers = new JSONArray();
-        for (User user : UserList.getUserList().users) {
+        for (User user : users) {
             jsonUsers.add(getUserJson(user));
         }
         try (FileWriter file = new FileWriter("json/usersTest.json")) {

@@ -11,11 +11,11 @@ public class UI {
         facade.createComment(taskOne, "Avoid civillians Jeff");
 
         Task taskTwo = facade.getTask("Curve the metal to make a cylindrical shape");
-        facade.moveTask(taskTwo, "DOING");
+        taskTwo = facade.moveTask(taskTwo, "DOING");
         taskTwo.removeAssignedUser(facade.getUser());
         taskTwo.addAssignedUser(facade.getUser("jeffgoldblum"));
-        // Comment comment = facade.getComment(taskTwo, "Not cylindrical enough");
-        // facade.createComment(comment, "How about you do it Jeff");
+        Comment comment = facade.getComment(taskTwo, "Not cylindrical enough");
+        facade.createComment(comment, "How about you do it Jeff");
 
         facade.createSection("Abandoned");
         Task taskThree = facade.getTask("Make impossible burger possible");

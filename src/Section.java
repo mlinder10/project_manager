@@ -2,7 +2,6 @@ package src;
 
 import java.util.ArrayList;
 
-import src.statuses.CreateTaskStatus;
 import src.statuses.DeleteTaskStatus;
 /**
  * Section class groups task together
@@ -33,9 +32,9 @@ public class Section {
  * @param task
  * @return Success
  */
-    public CreateTaskStatus createTask(Task task) {
+    public Task createTask(Task task) {
         this.tasks.add(task);
-        return CreateTaskStatus.SUCCESS;
+        return task;
     }
 
 /**

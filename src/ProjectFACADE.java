@@ -5,7 +5,6 @@ package src;
 import src.statuses.AddUserStatus;
 import src.statuses.CreateCommentStatus;
 import src.statuses.CreateProjectStatus;
-import src.statuses.CreateTaskStatus;
 import src.statuses.DeleteCommentStatus;
 import src.statuses.DeleteProjectStatus;
 import src.statuses.DeleteSectionStatus;
@@ -175,7 +174,7 @@ public class ProjectFACADE {
      * @param type
      * @return If task is created
      */
-    public CreateTaskStatus createTask(Section section, String title, String description, int priority, String type) {
+    public Task createTask(Section section, String title, String description, int priority, String type) {
         return section.createTask(new Task(title, description, priority, type));
     }
 
@@ -226,11 +225,8 @@ public class ProjectFACADE {
      * @return if task is moved
      */
     public MoveTaskStatus moveTask(Section currentSection, Section nextSection, Task task) {
-        if (currentSection.deleteTask(task) != DeleteTaskStatus.SUCCESS)
-            return MoveTaskStatus.DELETE_ERROR;
-        if (nextSection.createTask(task) != CreateTaskStatus.SUCCESS) {
-            return MoveTaskStatus.CREATE_ERROR;
-        }
+        currentSection.deleteTask(task);
+        nextSection.createTask(task);
         return MoveTaskStatus.SUCCESS;
     }
 
@@ -360,20 +356,21 @@ public class ProjectFACADE {
         return null;
     }
 
-    public boolean moveTask(Task targetTask, String sectionTitle) {
-        Section targetSection = null;
+    public Task moveTask(Task targetTask, String sectionTitle) {
+        Section removeSection = null;
+        Section addSection = null;
         for (Section section : projectList.currentProject.sections) {
             if (section.title.equals(sectionTitle)) {
-                createTask(section, targetTask.title, targetTask.description, targetTask.priority, targetTask.type);
+                addSection = section;
             }
             for (Task task : section.tasks) {
                 if (task.id.equals(targetTask.id)) {
-                    targetSection = section;
+                    removeSection = section;
                 }
             }
         }
-        targetSection.tasks.remove(targetTask);
-        return true;
+        removeSection.tasks.remove(targetTask);
+        return addSection.createTask(targetTask);
     }
 
     public User getUser() {
@@ -389,15 +386,8 @@ public class ProjectFACADE {
     }
 
     public Comment getComment(Task targetTask, String content) {
-        for (Section section : projectList.currentProject.sections) {
-            for (Task task : section.tasks) {
-                if (task.title.equals(targetTask.title)) {
-                    for (Comment comment : task.comments) {
-                        if (comment.content.equals(content))
-                            return comment;
-                    }
-                }
-            }
+        for (Comment comment : targetTask.comments) {
+            if (comment.content.equals(content)) return comment;
         }
 
         return null;
