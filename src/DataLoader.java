@@ -94,7 +94,8 @@ public class DataLoader extends DataConstants {
                         ArrayList<Comment> taskComments = new ArrayList<Comment>();
                         for (int commentIndex = 0; commentIndex < taskCommentsjson.size(); commentIndex++) {
                             JSONObject commentJsonRecursive = (JSONObject) taskCommentsjson.get(commentIndex);
-                            taskComments.add(parseComment(commentJsonRecursive));
+                            Comment parsedComment = (parseComment(commentJsonRecursive));
+                            taskComments.add(parsedComment);
                         }
 
                         // changelog parsing
