@@ -7,7 +7,7 @@ import src.statuses.LogoutStatus;
 import src.statuses.RegisterStatus;
 
 /**
- * Creates an array list of users 
+ * Creates an array list of users
  */
 public class UserList {
 
@@ -21,8 +21,9 @@ public class UserList {
     }
 
     /**
-     * Returns the array list of users 
-     * @return returns the list of users it if is not null 
+     * Returns the array list of users
+     * 
+     * @return returns the list of users it if is not null
      */
     public static UserList getUserList() {
         if (list == null)
@@ -31,11 +32,12 @@ public class UserList {
     }
 
     /**
-     * Regesters a new user by a username, email, and password 
-     * @param email holds the email of the user in a string
+     * Regesters a new user by a username, email, and password
+     * 
+     * @param email    holds the email of the user in a string
      * @param username holds the username of the user in a string
      * @param password holds the password of the user in a string
-     * @return returns a different status depending on information entered 
+     * @return returns a different status depending on information entered
      */
     public RegisterStatus register(String email, String username, String password) {
         // all empty
@@ -86,10 +88,11 @@ public class UserList {
     }
 
     /**
-     * Logs in a user when they use the correct credentials 
+     * Logs in a user when they use the correct credentials
+     * 
      * @param username holds the username of the user in a string
      * @param password holds the password of the user in a string
-     * @return returns a different status based on information entered 
+     * @return returns a different status based on information entered
      */
     public LoginStatus login(String username, String password) {
         for (User userElement : users) {
@@ -102,8 +105,9 @@ public class UserList {
     }
 
     /**
-     * Logs out a user 
-     * @return returns successesfull on logout 
+     * Logs out a user
+     * 
+     * @return returns successesfull on logout
      */
     public LogoutStatus logout() {
         user = null;

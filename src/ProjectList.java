@@ -22,6 +22,7 @@ public class ProjectList {
 
     /**
      * This creates a list of projects if there is not one already
+     * 
      * @return returns a new project list
      */
     public static ProjectList getProjectList() {
@@ -32,6 +33,7 @@ public class ProjectList {
 
     /**
      * Takes you to the current project you are working on
+     * 
      * @return returns the current project
      */
     public Project getCurrentProject() {
@@ -40,8 +42,9 @@ public class ProjectList {
 
     /**
      * Opens the project if the title matches the project title
+     * 
      * @param title this is the title of the current project
-     * @return returns nothing 
+     * @return returns nothing
      */
     public Project openProject(String title) {
         for (Project project : projects) {
@@ -54,10 +57,12 @@ public class ProjectList {
     }
 
     /**
-     * Allows the user to create a project 
-     * @param user This is the current user accesing the new project
+     * Allows the user to create a project
+     * 
+     * @param user  This is the current user accesing the new project
      * @param title This is the title of the new project
-     * @return returns a new project with the user who created the project and the name of it
+     * @return returns a new project with the user who created the project and the
+     *         name of it
      */
     public CreateProjectStatus createProject(User user, String title) {
         Project newProject = new Project(title, user);
@@ -67,6 +72,7 @@ public class ProjectList {
 
     /**
      * Removes the project when prompted and gives a success message after deleting
+     * 
      * @param project This is the project that is going to be deleted
      * @return returns the success of deleting the project
      */
@@ -76,8 +82,9 @@ public class ProjectList {
     }
 
     /**
-     * Creates a new section 
-     * @param title Holds the title of the new section in a string 
+     * Creates a new section
+     * 
+     * @param title Holds the title of the new section in a string
      * @return returns the new section
      */
     public Section createSection(String title) {
@@ -88,7 +95,9 @@ public class ProjectList {
 
     /**
      * Allows the user to remove a section inside the project
-     * @param section this is the section inside the project that is going to be removed
+     * 
+     * @param section this is the section inside the project that is going to be
+     *                removed
      * @return returns a deleted section
      */
     public DeleteSectionStatus removeSection(Section section) {

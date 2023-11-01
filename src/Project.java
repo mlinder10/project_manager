@@ -10,7 +10,7 @@ import src.statuses.DeleteCommentStatus;
 import src.statuses.DeleteSectionStatus;
 
 /**
- * Creates a new project 
+ * Creates a new project
  */
 public class Project {
     public UUID id;
@@ -21,9 +21,10 @@ public class Project {
     public ArrayList<Section> sections;
 
     /**
-     * Creates a new project and adds a user and different array list to the project 
-     * @param title holds the title of the project in a string 
-     * @param owner holds the owner of the project as a user 
+     * Creates a new project and adds a user and different array list to the project
+     * 
+     * @param title holds the title of the project in a string
+     * @param owner holds the owner of the project as a user
      */
     public Project(String title, User owner) {
         this.id = UUID.randomUUID();
@@ -35,13 +36,16 @@ public class Project {
     }
 
     /**
-     * creates a new project 
-     * @param id holds the users UUID 
-     * @param title holds the title of the project in a string 
-     * @param owner holds the owner of the project as a user 
-     * @param comments holds the comments to the project in an array list of comments
-     * @param users holds the users on the project as an array list of users 
-     * @param sections holds the sections in the project as an array list of sections 
+     * creates a new project
+     * 
+     * @param id       holds the users UUID
+     * @param title    holds the title of the project in a string
+     * @param owner    holds the owner of the project as a user
+     * @param comments holds the comments to the project in an array list of
+     *                 comments
+     * @param users    holds the users on the project as an array list of users
+     * @param sections holds the sections in the project as an array list of
+     *                 sections
      */
     public Project(UUID id, String title, User owner, ArrayList<Comment> comments, ArrayList<User> users,
             ArrayList<Section> sections) {
@@ -54,9 +58,10 @@ public class Project {
     }
 
     /**
-     * Edits the title string that holds the projects title 
-     * @param title holds the project title in a string 
-     * @return returns true to change the project title 
+     * Edits the title string that holds the projects title
+     * 
+     * @param title holds the project title in a string
+     * @return returns true to change the project title
      */
     public boolean editProjectTitle(String title) {
         this.title = title;
@@ -65,7 +70,8 @@ public class Project {
 
     public Section getSection(String title) {
         for (Section section : sections) {
-            if (section.title.equals(title)) return section;
+            if (section.title.equals(title))
+                return section;
         }
         return null;
     }
@@ -77,8 +83,9 @@ public class Project {
 
     /**
      * Deletes a section from the array list of sections
-     * @param section holds sections in an array list of sections 
-     * @return returns the succes status when a section is removed 
+     * 
+     * @param section holds sections in an array list of sections
+     * @return returns the succes status when a section is removed
      */
     public DeleteSectionStatus deleteSection(Section section) {
         this.sections.remove(section);
@@ -86,9 +93,10 @@ public class Project {
     }
 
     /**
-     * Adds another user to the project 
-     * @param user holds the user in a user object 
-     * @return returns the success status when a new user is added 
+     * Adds another user to the project
+     * 
+     * @param user holds the user in a user object
+     * @return returns the success status when a new user is added
      */
     public AddUserStatus addUser(User user) {
         this.users.add(user);
@@ -97,8 +105,9 @@ public class Project {
 
     /**
      * Creates a new comment and adds a status to it
-     * @param comment holds comments in an array list of comments 
-     * @return returns the success status when a new comment is created 
+     * 
+     * @param comment holds comments in an array list of comments
+     * @return returns the success status when a new comment is created
      */
     public CreateCommentStatus createComment(Comment comment) {
         this.comments.add(comment);
@@ -106,9 +115,10 @@ public class Project {
     }
 
     /**
-     * Deletes a comment by removing a comment from the comment array list 
-     * @param comment holds comments in an array list of comments 
-     * @return returns the success status when a commment is removed 
+     * Deletes a comment by removing a comment from the comment array list
+     * 
+     * @param comment holds comments in an array list of comments
+     * @return returns the success status when a commment is removed
      */
     public DeleteCommentStatus deleteComment(Comment comment) {
         this.comments.remove(comment);

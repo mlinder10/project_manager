@@ -1,4 +1,5 @@
 package src;
+
 /**
  * @author Alex Brown
  */
@@ -387,7 +388,8 @@ public class ProjectFACADE {
 
     public Comment getComment(Task targetTask, String content) {
         for (Comment comment : targetTask.comments) {
-            if (comment.content.equals(content)) return comment;
+            if (comment.content.equals(content))
+                return comment;
         }
 
         return null;

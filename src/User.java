@@ -2,8 +2,8 @@ package src;
 
 import java.util.UUID;
 
-/** 
- * Creates a new user 
+/**
+ * Creates a new user
  */
 public class User {
 
@@ -18,10 +18,11 @@ public class User {
     public String email;
 
     /**
-     * Creates a new user with a random uuid 
+     * Creates a new user with a random uuid
+     * 
      * @param username holds the username of the user in a string
      * @param password holds the password of the user in a string
-     * @param email holds the email of the user in a string
+     * @param email    holds the email of the user in a string
      */
     public User(String username, String password, String email) {
         this.username = username;
@@ -31,11 +32,12 @@ public class User {
     }
 
     /**
-     * Creates a new user 
-     * @param id holds the uuid of the user 
+     * Creates a new user
+     * 
+     * @param id       holds the uuid of the user
      * @param username holds the username of the user in a string
      * @param password holds the password of the user in a string
-     * @param email holds the email of the user in a string
+     * @param email    holds the email of the user in a string
      */
     public User(UUID id, String username, String password, String email) {
         this.id = id;
@@ -45,7 +47,8 @@ public class User {
     }
 
     /**
-     * Allows a user to login with their username and password 
+     * Allows a user to login with their username and password
+     * 
      * @param username holds the username of the user in a string
      * @param password holds the password of the user in a string
      * @return returns the users username and password for login
@@ -55,8 +58,9 @@ public class User {
     }
 
     /**
-     * Gets the user password 
-     * @return returns the password of a user 
+     * Gets the user password
+     * 
+     * @return returns the password of a user
      */
     public String getPassword() {
         return password;

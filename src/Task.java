@@ -23,10 +23,12 @@ public class Task {
 
     /**
      * creates getters and setters for the class Task
-     * @param title name of the task
+     * 
+     * @param title       name of the task
      * @param description overview of the task
-     * @param priority a 1-3 priority of the task. 1 being the highest and 3 being the lowest
-     * @param type type of task which include bug, tester, or new feature
+     * @param priority    a 1-3 priority of the task. 1 being the highest and 3
+     *                    being the lowest
+     * @param type        type of task which include bug, tester, or new feature
      */
     public Task(String title, String description, int priority, String type) {
         this.id = UUID.randomUUID();
@@ -42,16 +44,19 @@ public class Task {
     }
 
     /**
-     * creates unique id's for the class Task along with the other strings, booleans, integers, and array lists
-     * @param id universal unique identifer id
-     * @param title name of the task
-     * @param description overview of the task
-     * @param type type of task which include bug, tester, or new feature
+     * creates unique id's for the class Task along with the other strings,
+     * booleans, integers, and array lists
+     * 
+     * @param id            universal unique identifer id
+     * @param title         name of the task
+     * @param description   overview of the task
+     * @param type          type of task which include bug, tester, or new feature
      * @param assignedUsers users that can work on that specific task
-     * @param completion completion boolean of the task (true or false)
-     * @param priority a 1-3 priority of the task. 1 being the highest and 3 being the lowest
-     * @param comments comments under the task 
-     * @param changeLog history of changes that have been made to the task
+     * @param completion    completion boolean of the task (true or false)
+     * @param priority      a 1-3 priority of the task. 1 being the highest and 3
+     *                      being the lowest
+     * @param comments      comments under the task
+     * @param changeLog     history of changes that have been made to the task
      */
     public Task(UUID id, String title, String description, String type, ArrayList<User> assignedUsers,
             boolean completion, int priority, ArrayList<Comment> comments,
@@ -69,6 +74,7 @@ public class Task {
 
     /**
      * Allows a user to create a comment for a task
+     * 
      * @param comment comment for the task
      * @return returns a completed comment specified for the task
      */
@@ -79,6 +85,7 @@ public class Task {
 
     /**
      * Deletes a comment for the task
+     * 
      * @param comment comment for the task
      * @return returns the deleted comment as successful
      */
@@ -89,6 +96,7 @@ public class Task {
 
     /**
      * Adds a user to a task
+     * 
      * @param user someone who is being assigned to a task
      * @return returns true because a user is being added
      */
@@ -99,6 +107,7 @@ public class Task {
 
     /**
      * Removes a user from the task
+     * 
      * @param user someone who has been assigned to a task
      * @return returns true because the user has been removed from the task
      */
