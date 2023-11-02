@@ -7,7 +7,6 @@ public class UI {
         ProjectFACADE facade = new ProjectFACADE();
         facade.login("atticusmadden", "password");
         facade.openProject("Electric Missiles");
-
         Task taskOne = facade.createTask("TODO", "Initialize super algorithm to detonate at warp speed.", "", 1,
                 "New Feature");
         facade.createComment(taskOne, "Avoid civillians Jeff");

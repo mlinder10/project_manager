@@ -346,6 +346,7 @@ public class ProjectFACADE {
             return SaveDataStatus.FAILURE;
     }
 
+    @Deprecated
     public Task getTask(String title) {
         for (Section section : projectList.currentProject.sections) {
             for (Task task : section.tasks) {
@@ -357,6 +358,7 @@ public class ProjectFACADE {
         return null;
     }
 
+    @Deprecated
     public Task moveTask(Task targetTask, String sectionTitle) {
         Section removeSection = null;
         Section addSection = null;
@@ -374,10 +376,12 @@ public class ProjectFACADE {
         return addSection.createTask(targetTask);
     }
 
+    @Deprecated
     public User getUser() {
         return userList.user;
     }
 
+    @Deprecated
     public User getUser(String username) {
         for (User user : userList.users) {
             if (user.username.equals(username))
@@ -386,6 +390,7 @@ public class ProjectFACADE {
         return null;
     }
 
+    @Deprecated
     public Comment getComment(Task targetTask, String content) {
         for (Comment comment : targetTask.comments) {
             if (comment.content.equals(content))
