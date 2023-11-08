@@ -30,6 +30,7 @@ public class ProjectFACADETest {
 // Test cases for login method
     @Test
     public void testLoginValidUser() {
+        facade.register("validUsername", "validPassword", "test@example.com");
         LoginStatus status = facade.login("validUsername", "validPassword");
         assertEquals(LoginStatus.SUCCESS, status);
     }
