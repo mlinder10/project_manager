@@ -8,13 +8,10 @@ import org.junit.Test;
 
 import src.Comment;
 import src.Project;
-<<<<<<< HEAD
 import src.User;
-=======
 import src.Section;
 import src.User;
 import src.statuses.CreateSectionStatus;
->>>>>>> 821fc3ff208505ab0285a4139650df53cbcec9bf
 
 
 public class ProjectTest {
