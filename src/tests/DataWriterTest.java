@@ -17,35 +17,31 @@ import java.util.ArrayList;
 
 public class DataWriterTest {
 
-    private UserList users = UserList.getUserList();
+    private ArrayList<User> users = UserList.getUserList().users;
 
     @Before
-
     public void setup() {
-        UserList.getUserList().clear();
-        DataWriter.saveUsers();
+        users.clear();
+        DataWriter.saveUsers(users);
 
     }
 
     @After
-
     public void tearDown() {
-        UserList.getUserList().clear();
-        DataWriter.saveUsers();
+        users.clear();
+        DataWriter.saveUsers(users);
     }
 
     @Test
-
     public void testWritingZeroUsers(){
-        userList = DataLoader.loadUsers();
-        assertEquals(0, userList.size());
+        users = DataLoader.loadUsers();
+        assertEquals(0, users.size());
     }
 
     @Test
-
     public void testWritingOneUser() {
-        users.add(new User("hill", "12345678"));
-        DataWriter.saveUsers();
+        users.add(new User("hill", "12345678", "ahill@gmail.com"));
+        DataWriter.saveUsers(users);
         assertEquals("hill", DataLoader.loadUsers().get(0).username);
     }
 
