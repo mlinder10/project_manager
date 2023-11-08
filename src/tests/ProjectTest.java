@@ -6,8 +6,15 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import src.Comment;
 import src.Project;
+<<<<<<< HEAD
 import src.User;
+=======
+import src.Section;
+import src.User;
+import src.statuses.CreateSectionStatus;
+>>>>>>> 821fc3ff208505ab0285a4139650df53cbcec9bf
 
 
 public class ProjectTest {
@@ -24,12 +31,18 @@ public class ProjectTest {
 
     @Test 
     public void createSection() {
-        
+        ArrayList<Section> sections = new ArrayList<>();
+        Section section = new Section("TODO");
+        sections.add(section);
+        assertEquals(true, sections.add(section));
     }
 
     @Test 
     public void deleteSection() {
-        
+        ArrayList<Section> sections = new ArrayList<>();
+        Section section = new Section("TODO");
+        sections.add(section);
+        assertEquals(true, sections.remove(section));
     }
 
     @Test 
@@ -42,11 +55,19 @@ public class ProjectTest {
 
     @Test 
     public void createComment() {
-        
+        ArrayList<Comment> comments = new ArrayList<>();
+        User userOne = new User("asmith", "password", "asmith@gmail.com");
+        Comment comment = new Comment("Make impossible burger possible", userOne);
+        comments.add(comment);
+        assertEquals(true, comments.add(comment));
     }
 
     @Test 
     public void deleteComment() {
-        
+        ArrayList<Comment> comments = new ArrayList<>();
+        User userOne = new User("asmith", "password", "asmith@gmail.com");
+        Comment comment = new Comment("Make impossible burger possible", userOne);
+        comments.add(comment);
+        assertEquals(true, comments.remove(comment));
     }
 }
