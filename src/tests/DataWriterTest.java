@@ -1,13 +1,15 @@
 package src.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
-
+import src.DataLoader;
+import src.DataWriter;
+import src.User;
 import src.UserList;
 
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 
 public class DataWriterTest {
 
-    private ArrayList<User> users = UserList.getUserList();
+    private UserList users = UserList.getUserList();
 
     @Before
 
