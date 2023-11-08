@@ -59,7 +59,8 @@ public class ProjectFACADE {
      * @param email
      * @return regerster status
      */
-    public RegisterStatus register(String username, String password, String email) {
+    
+     public RegisterStatus register(String username, String password, String email) {
         return userList.register(password, username, email);
     }
 
@@ -394,4 +395,5 @@ public class ProjectFACADE {
 
         return null;
     }
+
 }
