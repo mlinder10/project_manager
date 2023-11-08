@@ -1,3 +1,9 @@
 {
+<<<<<<< HEAD
     "java.debug.settings.onBuildFailureProceed": true
+=======
+    "java.test.config": {
+        "workingDirectory": "${workspaceFolder}"
+    }
+>>>>>>> 0ca6c61fb3e93c6d51e43fc88b13098f5ff3efb7
 }
