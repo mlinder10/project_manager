@@ -78,6 +78,7 @@ public class ProjectFACADE {
      * @param title
      * @return project
      */
+    @Deprecated
     public Project getProject(String title) {
         return projectList.openProject(title);
     }
@@ -88,6 +89,7 @@ public class ProjectFACADE {
      * @param title
      * @return project
      */
+    @Deprecated
     public Project openProject(String title) {
         return projectList.openProject(title);
     }
@@ -130,6 +132,7 @@ public class ProjectFACADE {
      * @param title
      * @return Section
      */
+    @Deprecated
     public Section getSection(String title) {
         for (Section section : projectList.currentProject.sections) {
             if (section.title.equals(title))
@@ -186,6 +189,7 @@ public class ProjectFACADE {
      * @param sectionTitle
      * @return
      */
+    @Deprecated
     public boolean moveTask(String taskTitle, String sectionTitle) {
         Section oldSection = null;
         Task movingTask = null;
