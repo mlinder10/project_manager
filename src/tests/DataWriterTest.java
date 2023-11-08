@@ -1,20 +1,23 @@
 package src.tests;
 
-import org.junit.jupiter.Assertions.*;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import org.junit.jupiter.api.BeforeEach;
+
 
 import src.UserList;
 
-import org.junit.jupiter.api.AfterEach;
+
 import java.util.ArrayList;
 
 public class DataWriterTest {
 
     private ArrayList<User> users = UserList.getUserList();
 
-    @BeforeEach
+    @Before
 
     public void setup() {
         UserList.getUserList().clear();
@@ -22,7 +25,7 @@ public class DataWriterTest {
 
     }
 
-    @AfterEach
+    @After
 
     public void tearDown() {
         UserList.getUserList().clear();
