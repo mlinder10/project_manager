@@ -22,6 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ProjectListTest {
+    String title;
 
     @Test
     public void testCreateProject()
@@ -36,7 +37,8 @@ public class ProjectListTest {
     {
         User userOne = new User("asmith", "password", "asmith@gmail.com");
         Project project = new Project("Electric Missiles", userOne);
-
+        project.title.equals(title);
+        assert (project) != null;
     }
 
     @Test
