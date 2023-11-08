@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import src.DataLoader;
 import src.DataWriter;
+import src.Project;
+import src.ProjectList;
 import src.User;
 import src.UserList;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class DataWriterTest {
 
     private ArrayList<User> users = UserList.getUserList().users;
+    private ArrayList<Project> projects = ProjectList.getProjectList().projects;
 
     @Before
     public void setup() {
@@ -33,7 +36,7 @@ public class DataWriterTest {
     }
 
     @Test
-    public void testWritingZeroUsers(){
+    public void testWritingEmpty(){
         users = DataLoader.loadUsers();
         assertEquals(0, users.size());
     }
@@ -44,6 +47,42 @@ public class DataWriterTest {
         DataWriter.saveUsers(users);
         assertEquals("hill", DataLoader.loadUsers().get(0).username);
     }
+
+    @Test
+    public void testNoEmailAddress(){
+        users.clear();
+        users.add(new User("grey", "10987654", ""));
+        DataWriter.saveUsers(users);
+        assertEquals("", DataLoader.loadUsers().get(0));
+    }
+
+    @Test
+    public void testNoUsername(){
+        users.clear();
+        users.add(new User("grey", "10987654", "ho@gmail.com"));
+        users.add(new User("", "67599000", "ag@gmail.com"));
+        DataWriter.saveUsers(users);
+        assertEquals("", DataLoader.loadUsers().get(1));
+    }
+
+    @Test
+    public void testNoProjectName(){
+        projects.clear();
+        User max = new User("max", "8432234567", "hot@hotmail.com");
+        projects.add(new Project("", max));
+        DataWriter.saveProjects(projects);
+        assertEquals("", DataLoader.loadProjects().get(0));
+    }
+    @Test
+    public void testAddOneProject(){
+        projects.clear();
+        User kim = new User("kimmmy", "mrtakeyobish23", "topofthemorning@email.sc.edu");
+        projects.add(new Project("num1", kim));
+        DataWriter.saveProjects(projects);
+        assertEquals("num1", DataLoader.loadProjects().get(0).title);
+    }
+
+
 
 
 
