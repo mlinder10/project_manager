@@ -3,7 +3,6 @@ package src.tests;
 import org.junit.Test;
 
 import src.User;
-import src.UserList;
 
 import static org.junit.Assert.assertEquals;
 

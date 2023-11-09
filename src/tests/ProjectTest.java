@@ -10,8 +10,6 @@ import src.Comment;
 import src.Project;
 import src.User;
 import src.Section;
-import src.User;
-import src.statuses.CreateSectionStatus;
 
 
 public class ProjectTest {
